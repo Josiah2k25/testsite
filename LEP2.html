@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="sales.css" />
-  <link rel="stylesheet" href="lep2.css" />
+  <link rel="stylesheet" href="LEP2.css" />
 </head>
 <body>
   <!-- Navbar -->
@@ -84,40 +84,47 @@
     </div>
   </section>
   
-    <!-- Application Tabs -->
-<section class="application-section">
-  <div class="container">
-    <h2 class="section-title">Lunar Estates Phase 2 Applications</h2>
-    
+  <!-- Application Section -->
+  <section class="application-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Lunar Estates Phase 2 Applications</h2>
+        <p class="section-description">Ready to secure your lot in Lunar Estates Phase 2? Start your application process below.</p>
+      </div>
+      
+      <!-- Apply Now Button -->
+      <div class="apply-button-container">
+        <a href="javascript:void(0)" id="apply-now-btn" class="apply-button">
+          APPLY NOW <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+      
+      <!-- Application Types - Initially Hidden -->
+      <div id="application-types">
+        <h3 class="selection-heading">Select Application Type</h3>
+        <p class="selection-description">Please select the type of application you'd like to complete:</p>
+        
+        <div class="application-links">
+          <a href="builderapp.html" class="application-link">
+            <span class="application-icon"><i class="fas fa-hard-hat"></i></span>
+            <div class="application-text">
+              <h4>Builder Application</h4>
+              <p>For qualified builders interested in constructing homes in Lunar Estates Phase 2.</p>
+            </div>
+          </a>
+          
+          <a href="indapp.html" class="application-link">
+            <span class="application-icon"><i class="fas fa-home"></i></span>
+            <div class="application-text">
+              <h4>Individual Application</h4>
+              <p>For individuals looking to purchase a lot or custom build in Lunar Estates Phase 2.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <div class="application-tabs">
-      <button id="builder-tab" class="tab-btn active-tab">Builder Application</button>
-      <button id="individual-tab" class="tab-btn">Individual Application</button>
-    </div>
-    
-    <!-- Builder Application Section -->
-    <div id="builder-section" class="application-content">
-      <h3>Builder Offer to Purchase Vacant Property</h3>
-      <p>For qualified builders interested in constructing homes in Lunar Estates Phase 2.</p>
-      
-      <!-- Builder Form content here -->
-      <form id="builder-form" class="application-form" action="https://formspree.io/f/yourFormID" method="POST">
-        <!-- Form content -->
-      </form>
-    </div>
-    
-    <!-- Individual Application Section -->
-    <div id="individual-section" class="application-content">
-      <h3>Individual Offer to Purchase Vacant Property</h3>
-      <p>For individuals looking to purchase a lot or custom build in Lunar Estates Phase 2.</p>
-      
-      <!-- Individual Form content here -->
-      <form id="individual-form" class="application-form" action="https://formspree.io/f/yourFormID" method="POST">
-        <!-- Form content -->
-      </form>
-    </div>
-  </div>
-</section>
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-top">
@@ -192,6 +199,6 @@
     </button>
   </footer>
 
-  <script src="lep2.js"></script>
+  <script src="LEP2.js"></script>
 </body>
 </html>
