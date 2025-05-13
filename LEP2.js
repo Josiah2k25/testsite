@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Original site functionality 
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navbarLinks = document.querySelector('.navbar-links');
-    
     if (mobileMenuBtn && navbarLinks) {
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenuBtn.classList.toggle('active');
@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Navbar scroll effect
     window.addEventListener('scroll', () => {
         const navbar = document.querySelector('.navbar');
         if (navbar) {
@@ -20,8 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Back to top button
     const backToTopBtn = document.getElementById('back-to-top');
-    
     if (backToTopBtn) {
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
@@ -39,14 +40,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Contact form
     const contactForm = document.querySelector('.contact-form');
-    
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             console.log('Form submitted');
         });
     }
 
+    // Plat placeholder
     const platPlaceholder = document.querySelector('.plat-placeholder');
     if (platPlaceholder) {
         platPlaceholder.addEventListener('click', () => {
@@ -54,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Application cards
     const applicationCards = document.querySelectorAll('.application-card');
     if (applicationCards.length > 0) {
         applicationCards.forEach(card => {
@@ -64,102 +67,87 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // APPLICATION TABS - IMPROVED VERSION
     const builderTab = document.getElementById('builder-tab');
     const individualTab = document.getElementById('individual-tab');
     const builderSection = document.getElementById('builder-section');
     const individualSection = document.getElementById('individual-section');
 
     if (builderTab && individualTab && builderSection && individualSection) {
-   
-        individualSection.style.display = 'none';
-        builderTab.classList.add('active-tab');
-
+        console.log('Application tabs found and initialized');
+        
+        // Initialize tabs - show builder, hide individual
+        builderSection.classList.add('active');
+        individualSection.classList.remove('active');
+        
+        // Tab click handlers
         builderTab.addEventListener('click', function() {
-
-            builderSection.style.display = 'block';
-            individualSection.style.display = 'none';
-
+            console.log('Builder tab clicked');
+            builderSection.classList.add('active');
+            individualSection.classList.remove('active');
             builderTab.classList.add('active-tab');
             individualTab.classList.remove('active-tab');
         });
         
         individualTab.addEventListener('click', function() {
-
-            builderSection.style.display = 'none';
-            individualSection.style.display = 'block';
-
+            console.log('Individual tab clicked');
+            builderSection.classList.remove('active');
+            individualSection.classList.add('active');
             builderTab.classList.remove('active-tab');
             individualTab.classList.add('active-tab');
         });
+    } else {
+        console.warn('Some application tab elements are missing');
     }
 
-    if (document.getElementById('individual-form')) {
-        var priceInput = document.getElementById('individual-price');
-        var downPaymentInput = document.getElementById('individual-downpayment');
-        var termSelect = document.getElementById('individual-term');
-
-        function updatePaymentEstimate() {
-            var price = parseFloat(priceInput.value) || 75000;
-            var downPayment = parseFloat(downPaymentInput.value) || 3000;
-            var term = parseInt(termSelect.value) || 10;
-            var rate = 0.10; 
-            
-            var loanAmount = price - downPayment;
-            var monthlyRate = rate / 12;
-            var numPayments = term * 12;
-            var monthlyPayment = (loanAmount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -numPayments));
-            var paymentResultElement = document.getElementById('payment-result');
-            if (paymentResultElement) {
-                paymentResultElement.textContent = '$' + monthlyPayment.toFixed(2);
-            }
-        }
+    // Form validation and payment calculation
+    const individualForm = document.getElementById('individual-form');
+    const builderForm = document.getElementById('builder-form');
+    
+    if (individualForm) {
+        const priceInput = document.getElementById('individual-price');
+        const downPaymentInput = document.getElementById('individual-downpayment');
+        const termSelect = document.getElementById('individual-term');
         
         if (priceInput && downPaymentInput && termSelect) {
+            function updatePaymentEstimate() {
+                const price = parseFloat(priceInput.value) || 75000;
+                const downPayment = parseFloat(downPaymentInput.value) || 3000;
+                const term = parseInt(termSelect.value) || 10;
+                const rate = 0.10;
+                
+                const loanAmount = price - downPayment;
+                const monthlyRate = rate / 12;
+                const numPayments = term * 12;
+                const monthlyPayment = (loanAmount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -numPayments));
+                
+                const paymentResultElement = document.getElementById('payment-result');
+                if (paymentResultElement) {
+                    paymentResultElement.textContent = '$' + monthlyPayment.toFixed(2);
+                }
+            }
+            
+            // Update payment when fields change
             priceInput.addEventListener('input', updatePaymentEstimate);
             downPaymentInput.addEventListener('input', updatePaymentEstimate);
             termSelect.addEventListener('change', updatePaymentEstimate);
         }
     }
-
-    var builderForm = document.getElementById('builder-form');
-    var individualForm = document.getElementById('individual-form');
     
+    // Form submission handling
     if (builderForm) {
-        builderForm.addEventListener('submit', function(event) {
-        
+        builderForm.addEventListener('submit', function(e) {
+            // Add validation logic here if needed
             console.log('Builder form submitted');
         });
     }
     
     if (individualForm) {
-        individualForm.addEventListener('submit', function(event) {
-
+        individualForm.addEventListener('submit', function(e) {
+            // Add validation logic here if needed
             console.log('Individual form submitted');
         });
     }
 
     console.log('LEP2 page script loaded successfully');
 });
-
-function openTab(tabName) {
-    const builderTab = document.getElementById('builder-tab');
-    const individualTab = document.getElementById('individual-tab');
-    const builderSection = document.getElementById('builder-section');
-    const individualSection = document.getElementById('individual-section');
-    
-    if (tabName === 'builder') {
-
-        if (builderSection) builderSection.style.display = 'block';
-        if (individualSection) individualSection.style.display = 'none';
-  
-        if (builderTab) builderTab.classList.add('active-tab');
-        if (individualTab) individualTab.classList.remove('active-tab');
-    } else if (tabName === 'individual') {
-
-        if (builderSection) builderSection.style.display = 'none';
-        if (individualSection) individualSection.style.display = 'block';
- 
-        if (builderTab) builderTab.classList.remove('active-tab');
-        if (individualTab) individualTab.classList.add('active-tab');
-    }
-}
