@@ -1,0 +1,345 @@
+/* LEP1.html - Lunar Estates Phase 1 Specific Styles */
+
+/* Phase Hero Section */
+.phase-hero {
+  position: relative;
+  background-image: url('https://images.unsplash.com/photo-1626178793926-22b28830aa30?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJlbWl1bSUyMGhvbWVzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0 100px;
+  text-align: center;
+  color: #fff;
+}
+
+.phase-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.phase-hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.phase-hero-content .subtitle {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #f8f9fa;
+}
+
+.phase-hero-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.phase-hero-content p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Phase Details Section */
+.phase-details-section {
+  padding: 100px 0;
+  background-color: #fff;
+}
+
+.phase-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  margin-top: 50px;
+}
+
+.phase-content {
+  color: #555;
+  line-height: 1.8;
+}
+
+.phase-content p {
+  margin-bottom: 20px;
+}
+
+.phase-image-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 250px);
+  gap: 15px;
+}
+
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-img-1 {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+}
+
+.phase-features {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.phase-feature {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.phase-feature:hover {
+  background-color: #f8f9fa;
+  transform: translateX(5px);
+}
+
+.phase-feature i {
+  font-size: 1.5rem;
+  color: #2d4a8a;
+}
+
+/* Available Lots Section */
+.available-lots-section {
+  padding: 100px 0;
+  background-color: #f8f9fa;
+}
+
+.lots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.lot-card {
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.lot-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.lot-image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.lot-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.lot-card:hover .lot-image img {
+  transform: scale(1.05);
+}
+
+.lot-details {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.lot-title {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #333;
+  font-weight: 600;
+}
+
+.lot-specs {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.spec-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.spec-item i {
+  color: #2d4a8a;
+}
+
+.lot-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2d4a8a;
+  margin-bottom: 15px;
+}
+
+.lot-status {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.status-available {
+  background-color: #e6f7ed;
+  color: #20c969;
+}
+
+.status-pending {
+  background-color: #fff3e0;
+  color: #f9a825;
+}
+
+.status-sold {
+  background-color: #fbe9e7;
+  color: #f44336;
+}
+
+.lot-cta {
+  margin-top: auto;
+}
+
+.lot-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #2d4a8a;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.lot-btn:hover {
+  background-color: #1c3160;
+  transform: translateY(-2px);
+}
+
+/* Map Section Styles */
+.map-section {
+  padding: 100px 0;
+  background-color: #fff;
+}
+
+.map-container {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Utility Classes */
+.text-center {
+  text-align: center;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .lots-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 992px) {
+  .phase-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .phase-image-gallery {
+    grid-template-rows: repeat(2, 200px);
+    order: -1;
+    margin-bottom: 30px;
+  }
+  
+  .phase-hero-content h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .phase-features {
+    grid-template-columns: 1fr;
+  }
+  
+  .lots-grid {
+    grid-template-columns: 1fr;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .phase-hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .phase-hero-content p {
+    font-size: 1rem;
+  }
+  
+  .phase-details-section,
+  .available-lots-section,
+  .map-section {
+    padding: 70px 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .phase-hero {
+    padding: 100px 0 60px;
+  }
+  
+  .phase-hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .lot-specs {
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-start;
+  }
+  
+  .phase-image-gallery {
+    grid-template-columns: 1fr;
+    grid-template-rows: 250px auto auto;
+  }
+  
+  .gallery-img-1 {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
