@@ -146,66 +146,85 @@
   line-height: 1.6;
 }
 
-/* =========== UPDATED APPLICATION TAB STYLES =========== */
+/* Application Sections*/
 .applications-section {
-  padding: 60px 0;
-  background-color: #f9f9f9;
+  padding: 80px 0;
+  background-color: #faf8f5;
 }
 
-/* Tab Navigation */
+/* Application Tabs */
 .application-tabs {
   display: flex;
   margin-bottom: 30px;
-  border-bottom: 1px solid #ddd;
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .tab-btn {
-  padding: 12px 24px;
+  padding: 12px 25px;
   background-color: #f5f5f5;
-  border: 1px solid #ddd;
-  border-bottom: none;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
+  border: 2px solid #2d4a8a;
+  color: #2d4a8a;
   font-weight: 600;
-  font-size: 16px;
   cursor: pointer;
-  margin-right: 5px;
-  position: relative;
-  bottom: -1px;
   transition: all 0.3s ease;
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+}
+
+.tab-btn:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-right: 1px solid #2d4a8a;
+}
+
+.tab-btn:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-left: 1px solid #2d4a8a;
 }
 
 .tab-btn.active-tab {
-  background-color: #b26e45;
-  color: white;
-  border-color: #b26e45;
+  background-color: #2d4a8a;
+  color: #fff;
 }
 
-/* Application Content Sections */
+/* Application Content */
 .application-content {
-  background-color: #fff;
+  display: none;
+  max-width: 900px;
+  margin: 0 auto;
   padding: 30px;
-  border-radius: 6px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   margin-bottom: 40px;
 }
 
+.application-content.active {
+  display: block;
+}
+
 .application-content h3 {
-  margin-top: 0;
-  margin-bottom: 15px;
+  font-size: 2rem;
   color: #2c3e50;
-  font-size: 24px;
+  margin-bottom: 15px;
+  text-align: center;
 }
 
 .application-content p {
-  color: #666;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
+  color: #555;
+  text-align: center;
+  line-height: 1.6;
 }
 
 /* Form Styling */
 .application-form {
-  max-width: 900px;
-  margin: 0 auto;
+  margin-top: 30px;
 }
 
 .form-row {
@@ -222,19 +241,19 @@
 }
 
 h4 {
+  font-size: 1.4rem;
   margin-top: 30px;
-  margin-bottom: 15px;
-  padding-bottom: 8px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
   border-bottom: 1px solid #eee;
-  color: #2c3e50;
-  font-size: 18px;
+  color: #2d4a8a;
 }
 
 label {
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   font-weight: 500;
-  color: #444;
+  color: #333;
 }
 
 input[type="text"],
@@ -245,29 +264,25 @@ input[type="date"],
 select,
 textarea {
   width: 100%;
-  padding: 12px;
+  padding: 12px 15px;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 5px;
   font-family: inherit;
   font-size: 15px;
-  transition: border-color 0.2s;
+  transition: border-color 0.3s;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="tel"]:focus,
-input[type="number"]:focus,
-input[type="date"]:focus,
+input:focus,
 select:focus,
 textarea:focus {
-  border-color: #b26e45;
+  border-color: #2d4a8a;
   outline: none;
 }
 
 .form-check {
   display: flex;
   align-items: center;
-  margin: 20px 0;
+  margin: 25px 0;
 }
 
 .form-check input {
@@ -275,19 +290,13 @@ textarea:focus {
   width: auto;
 }
 
-.form-check label {
-  margin-bottom: 0;
-}
-
 .form-disclaimers {
-  margin: 25px 0;
+  margin: 30px 0;
   padding: 20px;
-  background-color: #f9f9f9;
+  background-color: #f8f9fa;
   border-radius: 6px;
-  border-left: 4px solid #b26e45;
-  font-size: 14px;
-  line-height: 1.6;
   color: #555;
+  line-height: 1.6;
 }
 
 .submit-btn {
@@ -295,26 +304,29 @@ textarea:focus {
   width: 100%;
   max-width: 300px;
   margin: 30px auto 0;
-  padding: 14px 24px;
-  background-color: #b26e45;
+  padding: 15px 25px;
+  background-color: #2d4a8a;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  text-align: center;
 }
 
 .submit-btn:hover {
-  background-color: #965c3a;
+  background-color: #1e3266;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(45, 74, 138, 0.2);
 }
 
-/* Payment Estimation Table */
+/* Payment Estimation */
 .payment-estimate {
   margin: 25px 0;
   padding: 20px;
-  background-color: #f9f9f9;
+  background-color: #f8f9fa;
   border-radius: 6px;
 }
 
@@ -322,6 +334,7 @@ textarea:focus {
   margin-bottom: 15px;
   font-size: 16px;
   color: #333;
+  font-weight: 600;
 }
 
 .payment-table {
@@ -332,41 +345,39 @@ textarea:focus {
 .payment-row {
   display: flex;
   border-bottom: 1px solid #eee;
-  padding: 10px 0;
+}
+
+.payment-cell {
+  flex: 1;
+  padding: 12px 8px;
+}
+
+.payment-cell:first-child {
+  font-weight: 500;
+  color: #2d4a8a;
 }
 
 .payment-row:last-child {
   border-bottom: none;
 }
 
-.payment-cell {
-  flex: 1;
-  padding: 5px;
-}
-
-.payment-cell:first-child {
-  font-weight: 500;
-  color: #444;
-}
-
-/* Hide the individual section by default */
-#individual-section {
-  display: none;
-}
-
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .application-tabs {
     flex-direction: column;
-    border-bottom: none;
   }
   
   .tab-btn {
-    width: 100%;
-    margin-right: 0;
-    margin-bottom: 5px;
-    border-radius: 4px;
-    border-bottom: 1px solid #ddd;
+    border-radius: 0;
+  }
+  
+  .tab-btn:first-child {
+    border-radius: 5px 5px 0 0;
+    border-bottom: none;
+  }
+  
+  .tab-btn:last-child {
+    border-radius: 0 0 5px 5px;
+    border-top: none;
   }
   
   .form-row {
@@ -375,9 +386,5 @@ textarea:focus {
   
   .form-group {
     flex: 0 0 100%;
-  }
-  
-  .application-content {
-    padding: 20px 15px;
   }
 }
