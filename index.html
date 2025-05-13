@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="styles.css" />
-
 </head>
 <body>
   <!-- Navbar -->
@@ -17,17 +16,8 @@
         <img src="https://assets.onecompiler.app/43hc69vrc/43hc638r5/IMG_0002.png" alt="Rio Tierra Logo" class="navbar-logo">
       </a>
       <div class="navbar-links">
-        <a href="#home" class="active">Home</a>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <div class="dropdown">
-          <a href="#" class="dropdown-toggle">Properties <i class="fas fa-chevron-down"></i></a>
-          <div class="dropdown-menu">
-            <a href="homebuyers.html">Home Buyers</a>
-            <a href="commercial.html">Commercial Buyers</a>
-          </div>
-        </div>
-        <a href="#downloads">Resources</a>
+        <a href="index.html" class="active">Home</a>
+        <a href="sales.html">Sales</a>
         <a href="#contact">Contact</a>
       </div>
       <div class="navbar-right">
@@ -41,6 +31,8 @@
     </div>
   </nav>
 
+  <!-- Rest of the content remains the same... -->
+  
   <!-- Hero Section -->
   <section class="hero" id="home">
     <div class="hero-overlay"></div>
@@ -50,8 +42,8 @@
         <h1>Building <br>Excellence, <br>Creating <span class="highlight">Communities</span></h1>
         <p>Text Random Text this is just a placeholder. blah blah blah blah blah blah blah mumbo jumbo.</p>
         <div class="hero-buttons">
-          <a href="#downloads" class="hero-btn primary-btn">
-            <span>EXPLORE RESOURCES</span>
+          <a href="sales.html" class="hero-btn primary-btn">
+            <span>EXPLORE SALES</span>
             <i class="fas fa-arrow-right"></i>
           </a>
           <a href="#projects" class="hero-btn secondary-btn">
@@ -267,63 +259,8 @@
       </div>
     </div>
   </section>
-
   
-  <!-- Looking for a New Home Section -->
-  <section class="homebuyer-section" id="homebuyer">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-subtitle">Home Buyers</div>
-        <h2 class="section-title">Looking for a New Home?</h2>
-        <p class="section-description">Discover our beautiful communities designed for modern living, offering exceptional amenities and thoughtfully designed spaces.</p>
-      </div>
-
-      <div class="homebuyer-content">
-        <div class="homebuyer-text">
-          <p>Rio Tierra develops exceptional residential communities that combine modern design, premium amenities, and sustainable living spaces. Whether you're searching for your first home, upgrading to accommodate a growing family, or looking for the perfect place to retire, we have communities to meet your needs.</p>
-          
-          <div class="homebuyer-features">
-            <div class="homebuyer-feature">
-              <div class="feature-icon">
-                <i class="fas fa-tree"></i>
-              </div>
-              <div class="feature-content">
-                <h3>Green Spaces</h3>
-                <p>Parks, trails, and preserved natural areas in every community.</p>
-              </div>
-            </div>
-            <div class="homebuyer-feature">
-              <div class="feature-icon">
-                <i class="fas fa-swimmer"></i>
-              </div>
-              <div class="feature-content">
-                <h3>Premier Amenities</h3>
-                <p>Resort-style pools, fitness centers, and community gathering spaces.</p>
-              </div>
-            </div>
-            <div class="homebuyer-feature">
-              <div class="feature-icon">
-                <i class="fas fa-shield-alt"></i>
-              </div>
-              <div class="feature-content">
-                <h3>Gated Communities</h3>
-                <p>Security and privacy for peace of mind in select neighborhoods.</p>
-              </div>
-            </div>
-          </div>
-          
-          <a href="homebuyers.html" class="cta-btn">
-            <span>Explore Our Communities</span>
-            <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-        <div class="homebuyer-image">
-          <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cmVhbCUyMGVzdGF0ZSUyMGRldmVsb3BtZW50fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Beautiful Home Community">
-        </div>
-      </div>
-    </div>
-  </section>
-
+ 
 <section class="contact-section" id="contact">
     <div class="container">
       <div class="contact-header">
@@ -458,12 +395,8 @@
           <div class="footer-links-container">
             <h4 class="footer-title">Quick Links</h4>
             <ul class="footer-links">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#about">About Us</a></li>
-              <li><a href="#projects">Projects</a></li>
-              <li><a href="#downloads">Resources</a></li>
-              <li><a href="homebuyers.html">Home Buyers</a></li>
-              <li><a href="commercial.html">Commercial Buyers</a></li>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="sales.html">Sales</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
           </div>
@@ -527,19 +460,6 @@
       navbarLinks.classList.toggle('active');
     });
     
-    // Dropdown Toggle for Mobile
-    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-    
-    dropdownToggles.forEach(toggle => {
-      toggle.addEventListener('click', (e) => {
-        if (window.innerWidth <= 768) {
-          e.preventDefault();
-          const dropdown = toggle.nextElementSibling;
-          dropdown.classList.toggle('active');
-        }
-      });
-    });
-    
     // Navbar Scroll Effect
     window.addEventListener('scroll', () => {
       const navbar = document.querySelector('.navbar');
@@ -572,32 +492,6 @@
         updateCount();
       });
     };
-    
-    // Filter Projects
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const projects = document.querySelectorAll('.project-card');
-    
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        // Remove active class from all buttons
-        filterBtns.forEach(btn => {
-          btn.classList.remove('active');
-        });
-        
-        // Add active class to clicked button
-        btn.classList.add('active');
-        
-        const filter = btn.getAttribute('data-filter');
-        
-        projects.forEach(project => {
-          if (filter === 'all' || project.getAttribute('data-category') === filter) {
-            project.style.display = 'block';
-          } else {
-            project.style.display = 'none';
-          }
-        });
-      });
-    });
     
     // Back to Top Button
     const backToTopBtn = document.getElementById('back-to-top');
