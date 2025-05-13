@@ -1,0 +1,298 @@
+/* LEP2.html - Lunar Estates Phase 2 Specific Styles */
+
+/* Phase Hero Section */
+.phase-hero {
+  position: relative;
+  background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8bHV4dXJ5JTIwcmVhbCUyMGVzdGF0ZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1200&q=80');
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0 100px;
+  text-align: center;
+  color: #fff;
+}
+
+.phase-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.phase-hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.phase-hero-content .subtitle {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #f8f9fa;
+}
+
+.phase-hero-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+/* Phase Details Section */
+.phase-details-section {
+  padding: 80px 0;
+  background-color: #fff;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.section-description {
+  max-width: 800px;
+  margin: 0 auto;
+  color: #666;
+  line-height: 1.7;
+}
+
+.phase-grid {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.phase-content {
+  max-width: 800px;
+  text-align: center;
+}
+
+/* Document Download Button */
+.document-download {
+  margin: 20px 0;
+}
+
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  background-color: #f8f9fa;
+  border: 2px solid #2d4a8a;
+  color: #2d4a8a;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+  background-color: #2d4a8a;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(45, 74, 138, 0.2);
+}
+
+.download-btn i {
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+/* Interactive Plat Section */
+.plat-section {
+  padding: 80px 0;
+  background-color: #f8f9fa;
+}
+
+.plat-container {
+  margin-top: 40px;
+}
+
+.plat-placeholder {
+  background-color: #fff;
+  border: 2px dashed #ddd;
+  border-radius: 8px;
+  padding: 60px;
+  text-align: center;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder-content {
+  max-width: 500px;
+}
+
+.placeholder-content i {
+  font-size: 4rem;
+  color: #2d4a8a;
+  margin-bottom: 20px;
+}
+
+.placeholder-content h3 {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.placeholder-content p {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Applications Section */
+.applications-section {
+  padding: 80px 0;
+  background-color: #fff;
+}
+
+.applications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.application-card {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.application-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.application-icon {
+  font-size: 3rem;
+  color: #2d4a8a;
+  margin-bottom: 20px;
+}
+
+.application-card h3 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.application-card p {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.application-requirements {
+  text-align: left;
+  padding-left: 20px;
+  margin-bottom: 25px;
+  color: #555;
+}
+
+.application-requirements li {
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.application-requirements li:before {
+  content: "•";
+  color: #2d4a8a;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+.application-card .download-btn {
+  margin-top: 10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .applications-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .phase-hero-content h1 {
+    font-size: 3rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .plat-placeholder {
+    padding: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .phase-hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .phase-hero-content .subtitle {
+    font-size: 1rem;
+  }
+  
+  .applications-grid {
+    grid-template-columns: 1fr;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .plat-placeholder {
+    padding: 30px;
+    min-height: 300px;
+  }
+  
+  .placeholder-content i {
+    font-size: 3rem;
+  }
+  
+  .placeholder-content h3 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .phase-hero {
+    padding: 100px 0 60px;
+  }
+  
+  .phase-hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .section-title {
+    font-size: 1.6rem;
+  }
+  
+  .plat-placeholder {
+    padding: 20px;
+    min-height: 250px;
+  }
+  
+  .application-card {
+    padding: 20px;
+  }
+}
