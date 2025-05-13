@@ -92,303 +92,35 @@
   <div class="container">
     <h2 class="section-title">Lunar Estates Phase 2 Applications</h2>
     
+<section class="applications-section">
+  <div class="container">
+    <h2 class="section-title">Lunar Estates Phase 2 Applications</h2>
+    
     <!-- Application Tabs -->
     <div class="application-tabs">
       <button id="builder-tab" class="tab-btn active-tab">Builder Application</button>
       <button id="individual-tab" class="tab-btn">Individual Application</button>
     </div>
     
-    <!-- Builder Application Form -->
-    <div id="builder-section" class="application-section">
+    <!-- Builder Application Section -->
+    <div id="builder-section" class="application-content">
       <h3>Builder Offer to Purchase Vacant Property</h3>
       <p>For qualified builders interested in constructing homes in Lunar Estates Phase 2.</p>
       
+      <!-- Builder Form content here -->
       <form id="builder-form" class="application-form" action="https://formspree.io/f/yourFormID" method="POST">
-        <input type="hidden" name="form_type" value="Builder Application">
-        
-        <div class="form-group">
-          <label for="builder-date">Date*</label>
-          <input type="date" id="builder-date" name="date" required>
-        </div>
-        
-        <h4>Buyer Information</h4>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="builder-name">Buyer Name*</label>
-            <input type="text" id="builder-name" name="buyer_name" required>
-          </div>
-          <div class="form-group">
-            <label for="builder-phone">Phone Number*</label>
-            <input type="tel" id="builder-phone" name="phone" required>
-          </div>
-        </div>
-        
-        <div class="form-group">
-          <label for="builder-address">Address*</label>
-          <input type="text" id="builder-address" name="address" required>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="builder-email">Email Address*</label>
-            <input type="email" id="builder-email" name="email" required>
-          </div>
-          <div class="form-group">
-            <label for="builder-ssn">SSN/TIN*</label>
-            <input type="text" id="builder-ssn" name="ssn_tin" required>
-          </div>
-        </div>
-        
-        <h4>Property Information</h4>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="builder-lot">Lot#*</label>
-            <input type="text" id="builder-lot" name="lot_number" required>
-          </div>
-          <div class="form-group">
-            <label for="builder-block">Block#*</label>
-            <input type="text" id="builder-block" name="block_number" required>
-          </div>
-        </div>
-        
-        <h4>Financial Details</h4>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="builder-price">Sales Price ($)*</label>
-            <input type="number" id="builder-price" name="sales_price" min="0" step="0.01" required>
-          </div>
-          <div class="form-group">
-            <label for="builder-deposit">Deposit ($)*</label>
-            <input type="number" id="builder-deposit" name="deposit" min="0" step="0.01" required>
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="builder-downpayment">Down Payment ($)*</label>
-            <input type="number" id="builder-downpayment" name="down_payment" min="0" step="0.01" required>
-          </div>
-          <div class="form-group">
-            <label for="builder-rate">Interest Rate (% per annum)*</label>
-            <input type="number" id="builder-rate" name="interest_rate" min="0" max="20" step="0.01" value="10" required>
-          </div>
-        </div>
-        
-        <p>Term: One (1) year maturity</p>
-        <p>Escrow for Taxes & Insurance: No</p>
-        
-        <div class="form-disclaimers">
-          <p>An Owner's Title Insurance Policy is not provided in this sale. Buyer may obtain a Title Insurance Policy at Buyer's expense from a title company of Buyer's choice.</p>
-          <p>Buyer is offering to purchase the property described herein "AS IS" in its present condition. The Property is subject to certain restrictions which Buyer acknowledges having received a copy of.</p>
-          <p>The documents signed at the closing of the sale and purchase will contain the entire agreement. Any promise or representation by any salesperson or employee of the Seller in writing or orally that is different than the documents signed at the closing is void.</p>
-        </div>
-        
-        <div class="form-check">
-          <input type="checkbox" id="builder-agreement" name="agreement" required>
-          <label for="builder-agreement">I agree to all terms and conditions.*</label>
-        </div>
-        
-        <div class="form-signature">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="builder-signature">Buyer Signature*</label>
-              <input type="text" id="builder-signature" name="signature" required placeholder="Type your full name">
-            </div>
-            <div class="form-group">
-              <label for="builder-title">Title/Position*</label>
-              <input type="text" id="builder-title" name="title_position" required>
-            </div>
-          </div>
-        </div>
-        
-        <button type="submit" class="submit-btn">Submit Application</button>
+        <!-- Form content -->
       </form>
     </div>
     
-    <!-- Individual Application Form -->
-    <div id="individual-section" class="application-section">
+    <!-- Individual Application Section -->
+    <div id="individual-section" class="application-content">
       <h3>Individual Offer to Purchase Vacant Property</h3>
       <p>For individuals looking to purchase a lot or custom build in Lunar Estates Phase 2.</p>
       
+      <!-- Individual Form content here -->
       <form id="individual-form" class="application-form" action="https://formspree.io/f/yourFormID" method="POST">
-        <input type="hidden" name="form_type" value="Individual Application">
-        
-        <h4>Property Information</h4>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="individual-lot">Lot#*</label>
-            <input type="text" id="individual-lot" name="lot_number" required>
-          </div>
-          <div class="form-group">
-            <label for="individual-block">Block#*</label>
-            <input type="text" id="individual-block" name="block_number" required>
-          </div>
-        </div>
-        
-        <h4>Buyer Information</h4>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="individual-buyer">Buyer*</label>
-            <input type="text" id="individual-buyer" name="buyer_name" required>
-          </div>
-          <div class="form-group">
-            <label for="individual-co-buyer">Co-Buyer (if applicable)</label>
-            <input type="text" id="individual-co-buyer" name="co_buyer_name">
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="individual-address">Address*</label>
-            <input type="text" id="individual-address" name="address" required>
-          </div>
-          <div class="form-group">
-            <label for="individual-co-address">Co-Buyer Address</label>
-            <input type="text" id="individual-co-address" name="co_buyer_address">
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="individual-email">Email*</label>
-            <input type="email" id="individual-email" name="email" required>
-          </div>
-          <div class="form-group">
-            <label for="individual-co-email">Co-Buyer Email</label>
-            <input type="email" id="individual-co-email" name="co_buyer_email">
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="individual-city-state-zip">City, State, Zip*</label>
-            <input type="text" id="individual-city-state-zip" name="city_state_zip" required>
-          </div>
-          <div class="form-group">
-            <label for="individual-co-city-state-zip">Co-Buyer City, State, Zip</label>
-            <input type="text" id="individual-co-city-state-zip" name="co_buyer_city_state_zip">
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="individual-phone">Phone*</label>
-            <input type="tel" id="individual-phone" name="phone" required>
-          </div>
-          <div class="form-group">
-            <label for="individual-ssn">SSN*</label>
-            <input type="text" id="individual-ssn" name="ssn" required>
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="individual-co-phone">Co-Buyer Phone</label>
-            <input type="tel" id="individual-co-phone" name="co_buyer_phone">
-          </div>
-          <div class="form-group">
-            <label for="individual-co-ssn">Co-Buyer SSN</label>
-            <input type="text" id="individual-co-ssn" name="co_buyer_ssn">
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="individual-military">Active Military*</label>
-            <select id="individual-military" name="active_military" required>
-              <option value="">Select...</option>
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="individual-marital-status">Status*</label>
-            <select id="individual-marital-status" name="marital_status" required>
-              <option value="">Select...</option>
-              <option value="Married">Married</option>
-              <option value="Single">Single</option>
-            </select>
-          </div>
-        </div>
-        
-        <h4>Financial Details</h4>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="individual-price">Sales Price ($)*</label>
-            <input type="number" id="individual-price" name="sales_price" min="0" step="0.01" required>
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="individual-deposit">Deposit ($)*</label>
-            <input type="number" id="individual-deposit" name="deposit" min="0" step="0.01" required>
-          </div>
-          <div class="form-group">
-            <label for="individual-downpayment">Down Payment ($)*</label>
-            <input type="number" id="individual-downpayment" name="down_payment" min="0" step="0.01" required>
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="individual-rate">Interest Rate (% per annum)*</label>
-            <input type="number" id="individual-rate" name="interest_rate" min="0" max="20" step="0.01" value="10" readonly required>
-          </div>
-          <div class="form-group">
-            <label for="individual-term">Term (years)*</label>
-            <select id="individual-term" name="term_years" required>
-              <option value="">Select...</option>
-              <option value="5">5 Years</option>
-              <option value="10">10 Years</option>
-              <option value="15">15 Years</option>
-              <option value="20">20 Years</option>
-            </select>
-          </div>
-        </div>
-        
-        <p>Interest Rate: 10% per annum (10% APR)</p>
-        <p>Escrow for Taxes: Yes</p>
-        
-        <div class="payment-estimate">
-          <h5>Estimated Monthly P&I Payment (based on $75,000 sales price with $3,000 down payment)</h5>
-          <div class="payment-table">
-            <div class="payment-row">
-              <div class="payment-cell">5 Years</div>
-              <div class="payment-cell">$1,529.79</div>
-            </div>
-            <div class="payment-row">
-              <div class="payment-cell">10 Years</div>
-              <div class="payment-cell">$951.49</div>
-            </div>
-            <div class="payment-row">
-              <div class="payment-cell">15 Years</div>
-              <div class="payment-cell">$773.72</div>
-            </div>
-            <div class="payment-row">
-              <div class="payment-cell">20 Years</div>
-              <div class="payment-cell">$694.82</div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="form-disclaimers">
-          <p>Your actual rate, payment and costs could be higher. Get an official Loan Estimate before choosing a loan.</p>
-        </div>
-        
-        <div class="form-check">
-          <input type="checkbox" id="individual-agreement" name="agreement" required>
-          <label for="individual-agreement">I agree to all terms and conditions.*</label>
-        </div>
-        
-        <div class="form-signature">
-          <div class="form-group">
-            <label for="individual-signature">Buyer Signature*</label>
-            <input type="text" id="individual-signature" name="signature" required placeholder="Type your full name">
-          </div>
-        </div>
-        
-        <button type="submit" class="submit-btn">Submit Application</button>
+        <!-- Form content -->
       </form>
     </div>
   </div>
