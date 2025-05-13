@@ -1,6 +1,3 @@
-/* LEP2.html - Lunar Estates Phase 2 Specific Styles */
-
-/* Phase Hero Section */
 .phase-hero {
   position: relative;
   background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8bHV4dXJ5JTIwcmVhbCUyMGVzdGF0ZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1200&q=80');
@@ -294,5 +291,199 @@
   
   .application-card {
     padding: 20px;
+  }
+}
+
+.application-section {
+  padding: 60px 0;
+  background-color: #f9f9f9;
+}
+
+.application-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.tab-btn {
+  padding: 12px 25px;
+  margin: 0 5px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+  background-color: #b26e45;
+  color: white;
+}
+
+.tab-content {
+  display: none;
+  background-color: white;
+  padding: 30px;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.tab-intro {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.tab-intro h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.application-form {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}
+
+.form-group {
+  flex: 1;
+  padding: 0 15px;
+  margin-bottom: 20px;
+  min-width: 250px;
+}
+
+.half-width {
+  flex: 0 0 50%;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #444;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.form-check {
+  display: flex;
+  align-items: center;
+}
+
+.form-check input {
+  margin-right: 10px;
+  width: auto;
+}
+
+.form-check label {
+  margin-bottom: 0;
+}
+
+.form-section-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 25px 0 15px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #eee;
+  color: #333;
+}
+
+.form-note {
+  font-size: 14px;
+  color: #666;
+  margin: 5px 0;
+}
+
+.form-disclaimers {
+  margin: 30px 0;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.submit-btn {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin: 30px auto 0;
+  padding: 14px 20px;
+  background-color: #b26e45;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #965c3a;
+}
+
+.payment-estimate {
+  margin: 25px 0;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+}
+
+.payment-estimate h5 {
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.payment-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.payment-row {
+  display: flex;
+  border-bottom: 1px solid #eee;
+}
+
+.payment-cell {
+  flex: 1;
+  padding: 10px;
+}
+
+.payment-cell:first-child {
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+  }
+  
+  .form-group, .half-width {
+    flex: 0 0 100%;
   }
 }
