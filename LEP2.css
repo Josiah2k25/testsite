@@ -145,24 +145,33 @@
   color: #666;
   line-height: 1.6;
 }
-.application-section {
-  padding: 40px 0;
+
+/* =========== UPDATED APPLICATION TAB STYLES =========== */
+.applications-section {
+  padding: 60px 0;
   background-color: #f9f9f9;
 }
 
+/* Tab Navigation */
 .application-tabs {
   display: flex;
   margin-bottom: 30px;
+  border-bottom: 1px solid #ddd;
 }
 
 .tab-btn {
-  padding: 10px 20px;
+  padding: 12px 24px;
   background-color: #f5f5f5;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-bottom: none;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
   font-weight: 600;
+  font-size: 16px;
   cursor: pointer;
-  margin-right: 10px;
+  margin-right: 5px;
+  position: relative;
+  bottom: -1px;
   transition: all 0.3s ease;
 }
 
@@ -170,6 +179,33 @@
   background-color: #b26e45;
   color: white;
   border-color: #b26e45;
+}
+
+/* Application Content Sections */
+.application-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  margin-bottom: 40px;
+}
+
+.application-content h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #2c3e50;
+  font-size: 24px;
+}
+
+.application-content p {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+/* Form Styling */
+.application-form {
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .form-row {
@@ -188,14 +224,17 @@
 h4 {
   margin-top: 30px;
   margin-bottom: 15px;
-  padding-bottom: 5px;
+  padding-bottom: 8px;
   border-bottom: 1px solid #eee;
+  color: #2c3e50;
+  font-size: 18px;
 }
 
 label {
   display: block;
   margin-bottom: 6px;
   font-weight: 500;
+  color: #444;
 }
 
 input[type="text"],
@@ -206,9 +245,23 @@ input[type="date"],
 select,
 textarea {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   border: 1px solid #ddd;
   border-radius: 4px;
+  font-family: inherit;
+  font-size: 15px;
+  transition: border-color 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+select:focus,
+textarea:focus {
+  border-color: #b26e45;
+  outline: none;
 }
 
 .form-check {
@@ -219,13 +272,22 @@ textarea {
 
 .form-check input {
   margin-right: 10px;
+  width: auto;
+}
+
+.form-check label {
+  margin-bottom: 0;
 }
 
 .form-disclaimers {
-  margin: 20px 0;
-  padding: 15px;
-  background-color: #f5f5f5;
-  border-radius: 4px;
+  margin: 25px 0;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  border-left: 4px solid #b26e45;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555;
 }
 
 .submit-btn {
@@ -233,7 +295,7 @@ textarea {
   width: 100%;
   max-width: 300px;
   margin: 30px auto 0;
-  padding: 12px 20px;
+  padding: 14px 24px;
   background-color: #b26e45;
   color: white;
   border: none;
@@ -241,39 +303,81 @@ textarea {
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .submit-btn:hover {
   background-color: #965c3a;
 }
 
+/* Payment Estimation Table */
 .payment-estimate {
-  margin: 20px 0;
-  padding: 15px;
-  background-color: #f5f5f5;
-  border-radius: 4px;
+  margin: 25px 0;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+}
+
+.payment-estimate h5 {
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #333;
 }
 
 .payment-table {
   width: 100%;
+  border-collapse: collapse;
 }
 
 .payment-row {
   display: flex;
   border-bottom: 1px solid #eee;
-  padding: 8px 0;
+  padding: 10px 0;
+}
+
+.payment-row:last-child {
+  border-bottom: none;
 }
 
 .payment-cell {
   flex: 1;
+  padding: 5px;
 }
 
+.payment-cell:first-child {
+  font-weight: 500;
+  color: #444;
+}
+
+/* Hide the individual section by default */
+#individual-section {
+  display: none;
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
+  .application-tabs {
+    flex-direction: column;
+    border-bottom: none;
+  }
+  
+  .tab-btn {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    border-bottom: 1px solid #ddd;
+  }
+  
   .form-row {
     flex-direction: column;
   }
   
   .form-group {
     flex: 0 0 100%;
+  }
+  
+  .application-content {
+    padding: 20px 15px;
   }
 }
