@@ -1,14 +1,21 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const phaseButtons = document.querySelectorAll('.phases-btn');
 
+document.addEventListener('DOMContentLoaded', function() {
+    // Basic dropdown functionality
+    const phaseButtons = document.querySelectorAll('.phases-btn');
+    
+    // Setup each dropdown button
     phaseButtons.forEach(button => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-          
-            const dropdown = this.nextElementSibling;
-                        dropdown.classList.toggle('active');
             
+            // Find this button's dropdown
+            const dropdown = this.nextElementSibling;
+            
+            // Toggle it
+            dropdown.classList.toggle('active');
+            
+            // Close other dropdowns
             phaseButtons.forEach(otherButton => {
                 if (otherButton !== button) {
                     const otherDropdown = otherButton.nextElementSibling;
@@ -20,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Close dropdowns when clicking elsewhere
     document.addEventListener('click', function(e) {
         if (!e.target.closest('.phases-wrapper')) {
             document.querySelectorAll('.phases-dropdown').forEach(dropdown => {
@@ -28,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-
+    // Mobile menu toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navbarLinks = document.querySelector('.navbar-links');
     
@@ -39,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Back to top button
     const backToTopBtn = document.getElementById('back-to-top');
     
     if (backToTopBtn) {
@@ -58,6 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Navbar scroll effect
     const navbar = document.querySelector('.navbar');
     
     if (navbar) {
@@ -70,5 +80,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Console log for debugging
     console.log('Sales page script loaded. Dropdown buttons found:', phaseButtons.length);
 });
