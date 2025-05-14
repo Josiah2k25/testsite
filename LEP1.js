@@ -1,23 +1,24 @@
-// Create the map and set initial view to Jupiter Street
-const map = L.map('map').setView([25.9560, -97.4790], 17); // Zoom level 17 for street view
+// Set map view to the new pin location
+const initialLatLng = [25.918443, -97.395774];
+const map = L.map('map').setView(initialLatLng, 17);
 
 // Add OpenStreetMap tiles
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
 
-// Optional: Add a marker at Jupiter Street
-let jupiterMarker = L.marker([25.9560, -97.4790]).addTo(map)
-  .bindPopup("8629 Jupiter Street, Brownsville, TX")
+// Place a default pin at the new coordinates
+let jupiterMarker = L.marker(initialLatLng).addTo(map)
+  .bindPopup("Jupiter Street Pin at 25.918443, -97.395774")
   .openPopup();
 
-// Find Jupiter Street button functionality
+// "Find Jupiter Street" button re-centers the map and opens popup
 document.getElementById('find-jupiter').addEventListener('click', () => {
-  map.setView([25.9560, -97.4790], 17);
+  map.setView(initialLatLng, 17);
   jupiterMarker.openPopup();
 });
 
-// Drop pin functionality
+// Drop pin on map click
 let pin;
 document.getElementById('drop-pin').addEventListener('click', () => {
   map.once('click', function (e) {
@@ -33,12 +34,12 @@ document.getElementById('drop-pin').addEventListener('click', () => {
   document.getElementById('notification').textContent = "Click on the map to drop a pin.";
 });
 
-// Reset map view
+// Reset map button functionality
 document.getElementById('reset-map').addEventListener('click', () => {
-  map.setView([25.9560, -97.4790], 17);
+  map.setView(initialLatLng, 17);
   if (pin) {
     map.removeLayer(pin);
     pin = null;
   }
-  document.getElementById('notification').textContent = "Map reset to Jupiter Street.";
+  document.getElementById('notification').textContent = "Map reset to Jupiter Street pin.";
 });
