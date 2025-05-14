@@ -12,10 +12,6 @@
 </head>
 <body>
   <!-- Navbar -->
-  
-  <script src="LEP1.js"></script>
-</body>
-</html>
   <nav class="navbar">
     <div class="navbar-container">
       <a href="index.html" class="navbar-brand">
@@ -48,7 +44,8 @@
     </div>
   </section>
 
-<section class="phase-details-section">
+  <!-- Phase Details Section -->
+  <section class="phase-details-section">
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Lunar Estates Phase 1</h2>
@@ -64,7 +61,32 @@
       </div>
     </div>
   </section>
+  
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jupiter Street Map - Rio Tierra</title>
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.3/leaflet.css" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="LEP1.css" />
+</head>
+<body>
+  <div class="map-container">
+    <div id="map"></div>
+    <div class="map-controls">
+      <button id="find-jupiter" class="control-button">Find Jupiter Street</button>
+      <button id="drop-pin" class="control-button secondary">Drop Pin</button>
+      <button id="reset-map" class="control-button">Reset Map</button>
+    </div>
+    <div id="notification" class="notification">Click anywhere on the map to drop a pin</div>
+  </div>
 
+  <!-- Leaflet JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.3/leaflet.js"></script>
+  <!-- Custom JS -->
+  <script src="LEP1.js"></script>
+</body>
 
   <!-- Contact Section -->
   <section class="contact-section" id="contact">
@@ -243,6 +265,6 @@
     </button>
   </footer>
 
-  <script src="lep1.js"></script>
+  <script src="LEP1.js"></script>
 </body>
 </html>
