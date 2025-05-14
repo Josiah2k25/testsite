@@ -76,7 +76,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // Place a default pin at the new coordinates
 let jupiterMarker = L.marker(initialLatLng).addTo(map)
-  .bindPopup("Jupiter Street Pin at 25.918443, -97.395774")
+  .bindPopup("Lunar Estates")
   .openPopup();
 
 // "Find Jupiter Street" button re-centers the map and opens popup
