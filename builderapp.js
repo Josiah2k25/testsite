@@ -1,4 +1,3 @@
-// Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
   // Navbar scroll effect
   const navbar = document.querySelector('.navbar');
@@ -12,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
     
-    // Initial check on page load
     if (window.scrollY > 50) {
       navbar.classList.add('solid');
     }
@@ -57,13 +55,9 @@ document.addEventListener('DOMContentLoaded', function() {
   if (authTabs.length > 0) {
     authTabs.forEach(tab => {
       tab.addEventListener('click', function() {
-        // Remove active class from all tabs
         authTabs.forEach(t => t.classList.remove('active'));
-        
-        // Add active class to clicked tab
         this.classList.add('active');
         
-        // Show the corresponding form
         const tabType = this.getAttribute('data-tab');
         
         if (tabType === 'login') {
@@ -88,7 +82,6 @@ document.addEventListener('DOMContentLoaded', function() {
       const email = document.getElementById('login-email').value;
       const password = document.getElementById('login-password').value;
       
-      // Client-side validation
       if (!validateEmail(email)) {
         alert('Please enter a valid email address');
         return;
@@ -99,13 +92,10 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
       
-      // Here you would typically make an AJAX request to your server for authentication
-      // For demo purposes, we'll just simulate a successful login
       simulateServerRequest('login', { email, password })
         .then(response => {
           if (response.success) {
-            // Redirect to the builder application form after successful login
-            window.location.href = 'builder-dashboard.html';
+            window.location.href = 'builderform.html';
           } else {
             alert(response.message || 'Login failed. Please try again.');
           }
@@ -128,7 +118,6 @@ document.addEventListener('DOMContentLoaded', function() {
       const confirmPassword = document.getElementById('confirm-password').value;
       const termsAccepted = document.getElementById('terms').checked;
       
-      // Client-side validation
       if (!company.trim()) {
         alert('Please enter your company name');
         return;
@@ -159,13 +148,10 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
       
-      // Here you would typically make an AJAX request to your server to create the account
-      // For demo purposes, we'll just simulate a successful signup
       simulateServerRequest('signup', { company, email, phone, password })
         .then(response => {
           if (response.success) {
             alert('Account created successfully! You can now log in.');
-            // Switch to login tab
             document.querySelector('[data-tab="login"]').click();
           } else {
             alert(response.message || 'Signup failed. Please try again.');
@@ -178,7 +164,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // Helper functions
   function validateEmail(email) {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
@@ -189,21 +174,16 @@ document.addEventListener('DOMContentLoaded', function() {
     return re.test(String(phone));
   }
   
-  // This function simulates a server request for demo purposes
-  // In a real application, you would replace this with actual AJAX calls to your backend
   function simulateServerRequest(type, data) {
     return new Promise((resolve, reject) => {
       console.log(`Simulating ${type} request with data:`, data);
       
-      // Simulate server delay
       setTimeout(() => {
-        // For demo: Check if user exists in local storage (simulated database)
         if (type === 'login') {
           const users = JSON.parse(localStorage.getItem('rio_tierra_users') || '[]');
           const user = users.find(u => u.email === data.email);
           
           if (user && user.password === data.password) {
-            // Store current user
             localStorage.setItem('rio_tierra_current_user', JSON.stringify({
               email: user.email,
               company: user.company
@@ -218,10 +198,8 @@ document.addEventListener('DOMContentLoaded', function() {
           }
         } 
         else if (type === 'signup') {
-          // Simulate user registration
           const users = JSON.parse(localStorage.getItem('rio_tierra_users') || '[]');
           
-          // Check if email already exists
           if (users.some(u => u.email === data.email)) {
             resolve({ 
               success: false, 
@@ -230,12 +208,11 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
           }
           
-          // Store new user
           users.push({
             company: data.company,
             email: data.email,
             phone: data.phone,
-            password: data.password, // In a real app, NEVER store passwords in plain text
+            password: data.password,
             registeredAt: new Date().toISOString()
           });
           
