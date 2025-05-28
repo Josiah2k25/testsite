@@ -237,3 +237,41 @@
     font-size: 1.8rem;
   }
 }
+/* Solid Color Top Banner with Improved Text Contrast */
+.navbar {
+  background-color: #f6f1ea; /* Light beige background */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Remove any gradient or texture that might be applied */
+.navbar::before,
+.navbar::after {
+  display: none;
+}
+
+/* Make sure scrolling behavior retains solid color */
+.navbar.solid,
+.navbar.scrolled {
+  background-color: #f6f1ea;
+}
+
+/* Navbar Text Color Adjustments */
+.navbar-links a,
+.navbar-right a,
+.navbar-brand {
+  color: #2c3e50; /* Dark text color for better contrast */
+}
+
+/* Active and hover states */
+.navbar-links a.active,
+.navbar-links a:hover {
+  color: #2c3e50; /* Primary copper color */
+}
+
+/* CTA button text */
+.navbar-cta {
+  color: #ffffff !important; 
+}
+.mobile-menu-btn span {
+  background-color: #2c3e50; 
+}
