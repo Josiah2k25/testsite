@@ -1,9 +1,9 @@
-
+/* CSS Variables */
 :root {
-  --primary: #c1743c;         /* Orange */
-  --primary-dark: #a85e2d;    /* Dark orange */
-  --secondary: #2d4a8a;       /* Dark blue - not using for accents anymore */
-  --secondary-dark: #1e3a70;  /* Darker blue - not using for accents anymore */
+  --primary: #c1743c;
+  --primary-dark: #a85e2d;
+  --secondary: #2d4a8a;
+  --secondary-dark: #1e3a70;
   --text-dark: #2c3e50;
   --text-light: #666;
   --border-color: #e0e0e0;
@@ -12,43 +12,43 @@
   --white: #fff;
 }
 
-/* Override the individual form styling to use orange instead of blue */
-.individual-form .auth-button,
-.login-button {
-  background-color: var(--primary);
+/* Navbar Styles */
+.navbar {
+  background-color: #f6f1ea;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
-.individual-form .auth-button:hover,
-.login-button:hover {
-  background-color: var(--primary-dark);
+.navbar::before,
+.navbar::after {
+  display: none;
 }
 
-.individual-form .auth-tab.active,
-.tab-link.active {
-  color: var(--primary);
+.navbar.solid,
+.navbar.scrolled {
+  background-color: #f6f1ea;
 }
 
-.individual-form .auth-tab.active::after,
-.tab-link.active::after {
-  background-color: var(--primary);
+.navbar-links a,
+.navbar-right a,
+.navbar-brand {
+  color: #2c3e50;
 }
 
-.individual-form .input-with-icon input:focus,
-.form-input:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(193, 116, 60, 0.1);
+.navbar-links a.active,
+.navbar-links a:hover {
+  color: #2c3e50;
 }
 
-.individual-form .forgot-password,
-.individual-form .terms-checkbox a,
-.forgot-password-link,
-.sign-up-link,
-.login-link {
-  color: var(--primary);
+.navbar-cta {
+  color: #ffffff !important;
 }
 
-/* New styling specific to the login portal UI shown in the image */
-.portal-container {
+.mobile-menu-btn span {
+  background-color: #2c3e50;
+}
+
+/* Auth Container Styles */
+.auth-container {
   max-width: 450px;
   margin: 0 auto;
   background-color: var(--white);
@@ -57,31 +57,32 @@
   padding: 40px;
 }
 
-.portal-header {
+.auth-header {
   text-align: center;
   margin-bottom: 35px;
 }
 
-.portal-header h2 {
+.auth-header h2 {
   font-size: 1.8rem;
   color: var(--text-dark);
   margin-bottom: 12px;
   font-weight: 600;
 }
 
-.portal-header p {
+.auth-header p {
   color: var(--text-light);
   font-size: 0.95rem;
   line-height: 1.5;
 }
 
-.tab-container {
+/* Tab Styles */
+.auth-tabs {
   display: flex;
   margin-bottom: 35px;
   border-bottom: 1px solid var(--border-color);
 }
 
-.tab-link {
+.auth-tab {
   flex: 1;
   padding: 15px 0;
   font-size: 16px;
@@ -93,19 +94,27 @@
   color: var(--text-light);
   transition: all 0.3s ease;
   position: relative;
-  text-decoration: none;
 }
 
-.tab-link.active {
+.auth-tab.active {
   color: var(--primary);
   border-bottom: 2px solid var(--primary);
+}
+
+/* Form Styles */
+.auth-form-container {
+  display: block;
+}
+
+.auth-form-container.hidden {
+  display: none;
 }
 
 .form-group {
   margin-bottom: 22px;
 }
 
-.form-label {
+.form-group label {
   display: block;
   margin-bottom: 8px;
   font-weight: 500;
@@ -113,7 +122,20 @@
   font-size: 0.95rem;
 }
 
-.form-input {
+.input-with-icon {
+  position: relative;
+}
+
+.input-with-icon i {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-light);
+  z-index: 1;
+}
+
+.input-with-icon input {
   width: 100%;
   padding: 14px 15px 14px 45px;
   border: 1px solid var(--input-border);
@@ -123,12 +145,13 @@
   background-color: var(--white);
 }
 
-.form-input:focus {
+.input-with-icon input:focus {
   border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(193, 116, 60, 0.1);
   outline: none;
 }
 
+/* Form Options */
 .form-options {
   display: flex;
   justify-content: space-between;
@@ -136,31 +159,34 @@
   margin-bottom: 24px;
 }
 
-.remember-me {
+.checkbox-container {
   display: flex;
   align-items: center;
 }
 
-.remember-me input[type="checkbox"] {
+.checkbox-container input[type="checkbox"] {
   margin-right: 8px;
 }
 
-.forgot-password-link {
+.forgot-password {
   font-size: 14px;
+  color: var(--primary);
   text-decoration: none;
   font-weight: 500;
 }
 
-.forgot-password-link:hover {
+.forgot-password:hover {
   text-decoration: underline;
 }
 
-.login-button {
+/* Button Styles */
+.auth-button {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   padding: 15px;
+  background-color: var(--primary);
   color: var(--white);
   border: none;
   border-radius: 6px;
@@ -172,39 +198,90 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.login-button:hover {
+.auth-button:hover {
   background-color: var(--primary-dark);
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-.login-button i {
+.auth-button i {
   margin-right: 8px;
 }
 
-/* Add icons to inputs */
-.email-input-wrapper,
-.password-input-wrapper {
-  position: relative;
+/* Terms Checkbox */
+.terms-checkbox {
+  margin-bottom: 24px;
 }
 
-.email-input-wrapper::before,
-.password-input-wrapper::before {
-  font-family: "Font Awesome 5 Free";
-  position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-light);
-  z-index: 1;
+.terms-checkbox a {
+  color: var(--primary);
+  text-decoration: none;
 }
 
-.email-input-wrapper::before {
-  content: "\f0e0"; /* Envelope icon */
-  font-weight: 400;
+.terms-checkbox a:hover {
+  text-decoration: underline;
 }
 
-.password-input-wrapper::before {
-  content: "\f023"; /* Lock icon */
-  font-weight: 900;
+/* Back to Top Button */
+.back-to-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+.back-to-top-btn.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top-btn:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-3px);
+}
+
+/* Mobile Menu Styles */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #f6f1ea;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar-links.active {
+    display: flex;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+  }
+
+  .navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .auth-container {
+    padding: 30px 20px;
+  }
 }
