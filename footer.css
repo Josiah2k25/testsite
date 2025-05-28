@@ -1,0 +1,139 @@
+:root {
+  --primary: #c1743c;
+  --bg-dark: #0e1218;
+  --bg-darker: #070a0f;
+  --white: #ffffff;
+  --white-muted: rgba(255, 255, 255, 0.85);
+  --border: rgba(255, 255, 255, 0.1);
+  --accent-glow: rgba(193, 116, 60, 0.5);
+}
+
+.footer {
+  background: linear-gradient(135deg, var(--bg-dark), var(--bg-darker));
+  color: var(--white);
+  margin-top: 80px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.4);
+}
+
+.footer-top {
+  padding: 80px 5% 60px;
+  border-bottom: 1px solid var(--border);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 50px;
+  align-items: start;
+}
+
+.footer-logo img {
+  height: 65px;
+  margin-bottom: 25px;
+  filter: brightness(0) invert(1);
+}
+
+.footer-desc {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--white);
+  opacity: 0.9;
+}
+
+.footer-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: var(--white);
+  position: relative;
+  padding-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 45px;
+  height: 3px;
+  background: var(--primary);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 15px;
+}
+
+.footer-links a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--primary);
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+
+.contact-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.contact-icon {
+  font-size: 18px;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.contact-info p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--white);
+}
+
+.footer-bottom {
+  padding: 25px 5%;
+  background: rgba(0, 0, 0, 0.3);
+  border-top: 1px solid var(--border);
+}
+
+.footer-bottom-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-bottom-content p {
+  font-size: 0.85rem;
+  color: var(--white-muted);
+}
+
+.footer-bottom-links a {
+  color: var(--white-muted);
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.footer-bottom-links a:hover {
+  color: var(--primary);
+  text-shadow: 0 0 6px var(--accent-glow);
+}
