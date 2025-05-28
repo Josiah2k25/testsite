@@ -1,21 +1,18 @@
 
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Basic dropdown functionality
+    
     const phaseButtons = document.querySelectorAll('.phases-btn');
     
-    // Setup each dropdown button
     phaseButtons.forEach(button => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
             
-            // Find this button's dropdown
             const dropdown = this.nextElementSibling;
             
-            // Toggle it
             dropdown.classList.toggle('active');
             
-            // Close other dropdowns
             phaseButtons.forEach(otherButton => {
                 if (otherButton !== button) {
                     const otherDropdown = otherButton.nextElementSibling;
@@ -27,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Close dropdowns when clicking elsewhere
     document.addEventListener('click', function(e) {
         if (!e.target.closest('.phases-wrapper')) {
             document.querySelectorAll('.phases-dropdown').forEach(dropdown => {
@@ -36,7 +32,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Mobile menu toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navbarLinks = document.querySelector('.navbar-links');
     
@@ -47,7 +42,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Back to top button
     const backToTopBtn = document.getElementById('back-to-top');
     
     if (backToTopBtn) {
