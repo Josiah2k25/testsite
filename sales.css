@@ -883,13 +883,70 @@
     font-size: clamp(2rem, 4vw, 2.8rem);
   }
 
+  .subdivisions-section {
+    padding: 60px 0;
+  }
+
+  .subdivisions-list {
+    gap: 40px;
+    margin-top: 60px;
+  }
+
+  .subdivision-item {
+    flex-direction: column;
+    margin: 0 15px;
+    border-radius: 20px;
+  }
+
+  .subdivision-item:nth-child(even) {
+    flex-direction: column;
+  }
+
+  .subdivision-item:hover {
+    transform: translate3d(0, -5px, 0) scale(1.01);
+  }
+
   .subdivision-image {
-    height: 350px;
-    margin: 15px;
+    height: 280px;
+    flex: none;
+    margin: 15px 15px 0 15px;
+    border-radius: 15px;
   }
 
   .subdivision-details {
-    padding: 35px 30px 50px 30px;
+    padding: 25px 20px 30px 20px;
+    flex: none;
+  }
+
+  .subdivision-title {
+    font-size: clamp(1.4rem, 4vw, 1.8rem);
+    margin-bottom: 15px;
+  }
+
+  .title-underline {
+    width: 60px;
+    height: 3px;
+    margin-bottom: 20px;
+  }
+
+  .subdivision-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+  }
+
+  .phases-wrapper {
+    margin-top: 20px;
+  }
+
+  .phases-btn {
+    max-width: 100%;
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  .phases-dropdown {
+    max-width: 100%;
   }
 
   .feature-item {
@@ -903,25 +960,12 @@
   .feature-title {
     font-size: 1.4rem;
   }
-
-  .phases-btn {
-    max-width: 100%;
-    padding: 16px 25px;
-  }
-
-  .phases-dropdown {
-    max-width: 100%;
-  }
-
-  .subdivisions-list {
-    gap: 80px;
-  }
 }
 
 @media (max-width: 576px) {
   .subdivisions-section,
   .why-choose-section {
-    padding: 80px 0;
+    padding: 50px 0;
   }
 
   .sales-hero {
@@ -929,54 +973,93 @@
   }
 
   .sales-hero h1 {
-    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
   }
 
   .sales-hero p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   .section-title {
-    font-size: clamp(1.8rem, 3vw, 2.2rem);
+    font-size: clamp(1.6rem, 5vw, 2rem);
+  }
+
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  .subdivisions-list {
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  .subdivision-item {
+    margin: 0 10px;
+    border-radius: 15px;
   }
 
   .subdivision-title {
-    font-size: clamp(1.5rem, 2vw, 1.9rem);
+    font-size: clamp(1.3rem, 4vw, 1.6rem);
+    margin-bottom: 12px;
+  }
+
+  .title-underline {
+    width: 50px;
+    height: 3px;
+    margin-bottom: 15px;
   }
 
   .subdivision-image {
-    height: 300px;
-    margin: 15px;
+    height: 220px;
+    margin: 12px 12px 0 12px;
+    border-radius: 12px;
   }
 
   .subdivision-details {
-    padding: 30px 25px 40px 25px;
+    padding: 20px 15px 25px 15px;
+  }
+
+  .subdivision-description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+  .phases-wrapper {
+    margin-top: 15px;
+  }
+
+  .phases-btn {
+    padding: 10px 16px;
+    font-size: 13px;
+    border-radius: 25px;
+  }
+
+  .phases-dropdown {
+    border-radius: 0 0 15px 15px;
+  }
+
+  .phases-dropdown a {
+    padding: 10px 16px;
+    font-size: 13px;
   }
 
   .features-grid {
     grid-template-columns: 1fr;
-    gap: 35px;
+    gap: 25px;
+    margin-top: 40px;
   }
 
   .feature-item {
-    padding: 35px 25px;
+    padding: 30px 20px;
   }
 
   .feature-icon {
-    font-size: 3rem;
+    font-size: 2.8rem;
   }
 
-  .subdivisions-list {
-    gap: 60px;
-    margin-top: 80px;
-  }
-
-  .section-header {
-    margin-bottom: 60px;
-  }
-
-  .features-grid {
-    margin-top: 60px;
+  .feature-title {
+    font-size: 1.2rem;
   }
 }
 
