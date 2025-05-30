@@ -222,42 +222,7 @@
     </div>
   </section>
 
-  <!-- Counter Section -->
-  <section class="counter-section">
-    <div class="counter-overlay"></div>
-    <div class="container">
-      <div class="counters-grid">
-        <div class="counter-item">
-          <div class="counter-icon">
-            <i class="fas fa-building"></i>
-          </div>
-          <div class="counter-number" data-count="300">0</div>
-          <div class="counter-title">Projects Completed</div>
-        </div>
-        <div class="counter-item">
-          <div class="counter-icon">
-            <i class="fas fa-users"></i>
-          </div>
-          <div class="counter-number" data-count="450">0</div>
-          <div class="counter-title">Happy Clients</div>
-        </div>
-        <div class="counter-item">
-          <div class="counter-icon">
-            <i class="fas fa-award"></i>
-          </div>
-          <div class="counter-number" data-count="18">0</div>
-          <div class="counter-title">Industry Awards</div>
-        </div>
-        <div class="counter-item">
-          <div class="counter-icon">
-            <i class="fas fa-map-marker-alt"></i>
-          </div>
-          <div class="counter-number" data-count="5">0</div>
-          <div class="counter-title">State Presence</div>
-        </div>
-      </div>
-    </div>
-  </section>
+
   
  
 <section class="contact-section" id="contact">
@@ -298,7 +263,6 @@
             <div class="contact-info-content">
               <h3>Email Us</h3>
               <p>info@riotierra.com</p>
-              <p>support@riotierra.com</p>
             </div>
           </div>
           
@@ -316,55 +280,58 @@
         <div class="contact-form-container">
           <h2 class="form-title">Send Us a Message</h2>
           
-          <form action="https://formspree.io/f/yourFormID" method="POST" class="contact-form">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="name">Full Name*</label>
-                <input type="text" id="name" name="name" required>
-              </div>
-              <div class="form-group">
-                <label for="email">Email Address*</label>
-                <input type="email" id="email" name="email" required>
-              </div>
-            </div>
-            
-            <div class="form-row">
-              <div class="form-group">
-                <label for="company">Company Name</label>
-                <input type="text" id="company" name="company">
-              </div>
-              <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone">
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <label for="subject">Subject*</label>
-              <select id="subject" name="subject" required>
-                <option value="">Select a topic</option>
-                <option value="project-inquiry">Project Inquiry</option>
-                <option value="partnership">Partnership Opportunity</option>
-                <option value="resources">Resource Request</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            
-            <div class="form-group">
-              <label for="message">Message*</label>
-              <textarea id="message" name="message" rows="5" required></textarea>
-            </div>
-            
-            <div class="form-group form-check">
-              <input type="checkbox" id="privacy" name="privacy" required>
-              <label for="privacy">I agree to the <a href="#">privacy policy</a> and consent to having my data processed</label>
-            </div>
-            
-            <button type="submit" class="submit-btn">Send Message</button>
-          </form>
-        </div>
-      </div>
+        <form action="https://formspree.io/f/xanjwnrn" method="POST" class="contact-form">
+  <!-- Hidden fields for better email formatting -->
+  <input type="hidden" name="_subject" value="New Contact Form Submission - Rio Tierra">
+  <input type="hidden" name="_captcha" value="false">
+  
+  <div class="form-row">
+    <div class="form-group">
+      <label for="name">Full Name*</label>
+      <input type="text" id="name" name="name" required>
     </div>
+    <div class="form-group">
+      <label for="email">Email Address*</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+  </div>
+  
+  <div class="form-row">
+    <div class="form-group">
+      <label for="company">Company Name</label>
+      <input type="text" id="company" name="company">
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="subject">Subject*</label>
+    <select id="subject" name="subject" required>
+      <option value="">Select a topic</option>
+      <option value="project-inquiry">Project Inquiry</option>
+      <option value="partnership">Partnership Opportunity</option>
+      <option value="resources">Resource Request</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
+  
+  <div class="form-group">
+    <label for="message">Message*</label>
+    <textarea id="message" name="message" rows="5" required placeholder="Tell us about your project or inquiry..."></textarea>
+  </div>
+  
+  <div class="form-group form-check">
+    <input type="checkbox" id="privacy" name="privacy" required>
+    <label for="privacy">I agree to the <a href="#">privacy policy</a> and consent to having my data processed</label>
+  </div>
+  
+  <button type="submit" class="submit-btn">Send Message</button>
+</form>
+           
+        
   </section>
 
   <!-- Map Section -->
