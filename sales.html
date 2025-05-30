@@ -61,6 +61,7 @@
           <div class="subdivision-details">
             <h3 class="subdivision-title">Lunar Estates</h3>
             <div class="title-underline"></div>
+            <p class="subdivision-description">Integrated residential and retail spaces for modern living with premium amenities.</p>
             <div class="phases-wrapper">
               <button class="phases-btn">View Phases <i class="fas fa-chevron-down"></i></button>
               <div class="phases-dropdown">
@@ -79,7 +80,7 @@
           <div class="subdivision-details">
             <h3 class="subdivision-title">Florida Estates</h3>
             <div class="title-underline"></div>
-    
+            <p class="subdivision-description">Luxury homes with waterfront views and premium amenities for exclusive living.</p>
             <div class="phases-wrapper">
               <button class="phases-btn">View Phases <i class="fas fa-chevron-down"></i></button>
               <div class="phases-dropdown">
@@ -98,7 +99,7 @@
           <div class="subdivision-details">
             <h3 class="subdivision-title">Palmetto Grove</h3>
             <div class="title-underline"></div>
-          
+            <p class="subdivision-description">Family homes surrounded by green spaces and recreational areas for vibrant community living.</p>
             <div class="phases-wrapper">
               <button class="phases-btn">View Phases <i class="fas fa-chevron-down"></i></button>
               <div class="phases-dropdown">
@@ -111,50 +112,10 @@
     </div>
   </section>
 
-  <!-- Why Choose Us Section -->
-  <section class="why-choose-section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-subtitle">Our Advantage</div>
-        <h2 class="section-title">Why Choose Rio Tierra</h2>
-        <p class="section-description">Discover the benefits of choosing a Rio Tierra community for your next home.</p>
-      </div>
 
-      <div class="features-grid">
-        <div class="feature-item">
-          <div class="feature-icon">
-            <i class="fas fa-medal"></i>
-          </div>
-          <h3 class="feature-title">Premium Quality</h3>
-          <p class="feature-desc">We maintain the highest standards in every aspect of our developments.</p>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">
-            <i class="fas fa-leaf"></i>
-          </div>
-          <h3 class="feature-title">Sustainability</h3>
-          <p class="feature-desc">Environmental responsibility is integrated into all our community planning.</p>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">
-            <i class="fas fa-home"></i>
-          </div>
-          <h3 class="feature-title">Community Focus</h3>
-          <p class="feature-desc">We create spaces that foster connection and enhance quality of life.</p>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">
-            <i class="fas fa-map-marker-alt"></i>
-          </div>
-          <h3 class="feature-title">Prime Locations</h3>
-          <p class="feature-desc">Strategic locations with easy access to amenities and major routes.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Contact Section -->
-  <section class="contact-section" id="contact">
+ <section class="contact-section" id="contact">
     <div class="container">
       <div class="contact-header">
         <div class="contact-title-small">GET IN TOUCH</div>
@@ -210,7 +171,11 @@
         <div class="contact-form-container">
           <h2 class="form-title">Send Us a Message</h2>
           
-          <form method="POST" class="contact-form" id="contact-form">
+          <form action="https://formspree.io/f/xanjwnrn" method="POST" class="contact-form">
+            <!-- Hidden fields for better email formatting -->
+            <input type="hidden" name="_subject" value="New Contact Form Submission - Rio Tierra Sales">
+            <input type="hidden" name="_captcha" value="false">
+            
             <div class="form-row">
               <div class="form-group">
                 <label for="name">Full Name*</label>
@@ -224,28 +189,34 @@
             
             <div class="form-row">
               <div class="form-group">
-                <label for="phone">Phone Number*</label>
-                <input type="tel" id="phone" name="phone" required>
+                <label for="company">Company Name</label>
+                <input type="text" id="company" name="company">
               </div>
               <div class="form-group">
-                <label for="interest">Interested In*</label>
-                <select id="interest" name="interest" required>
-                  <option value="">Select a subdivision</option>
-                  <option value="lunar-estates">Lunar Estates</option>
-                  <option value="florida-estates">Florida Estates</option>
-                  <option value="palmetto-grove">Palmetto Grove</option>
-                </select>
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone">
               </div>
             </div>
             
             <div class="form-group">
+              <label for="subject">Subject*</label>
+              <select id="subject" name="subject" required>
+                <option value="">Select a topic</option>
+                <option value="project-inquiry">Project Inquiry</option>
+                <option value="partnership">Partnership Opportunity</option>
+                <option value="resources">Resource Request</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
               <label for="message">Message*</label>
-              <textarea id="message" name="message" rows="5" required></textarea>
+              <textarea id="message" name="message" rows="5" required placeholder="Tell us about your project or inquiry..."></textarea>
             </div>
             
             <div class="form-group form-check">
               <input type="checkbox" id="privacy" name="privacy" required>
-              <label for="privacy">I agree to the <a href="#">privacy policy</a></label>
+              <label for="privacy">I agree to the <a href="#">privacy policy</a> and consent to having my data processed</label>
             </div>
             
             <button type="submit" class="submit-btn">Send Message</button>
