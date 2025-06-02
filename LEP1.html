@@ -6,6 +6,8 @@
   <title>Rio Tierra | Lunar Estates Phase 1</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.3/leaflet.css" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="sales.css" />
   <link rel="stylesheet" href="LEP1.css" />
@@ -62,32 +64,17 @@
       </div>
     </div>
   </section>
-  
-  <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jupiter Street Map - Rio Tierra</title>
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.3/leaflet.css" />
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="LEP1.css" />
-</head>
-<body>
 
-  <!-- Leaflet JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.3/leaflet.js"></script>
-  <!-- Custom JS -->
-  <script src="LEP1.js"></script>
-</body>
-<div class="map-wrapper">
-  <h3 class="map-heading">Lunar Estates Map</h3>
-  <div class="map-container">
-    <div id="map"></div>
-  </div>
-  <p class="map-address">Jupiter Street, Lunar Estates • McAllen, Texas</p>
-</div>
-
-
+  <!-- Map Section -->
+  <section class="map-wrapper">
+    <div class="container">
+      <h3 class="map-heading">Lunar Estates Phase 1 Location</h3>
+      <div class="map-container">
+        <div id="map"></div>
+      </div>
+      <p class="map-address">Jupiter Street, Brownsville, TX 78521</p>
+    </div>
+  </section>
   
   <!-- Footer -->
   <footer class="footer">
@@ -163,6 +150,9 @@
     </button>
   </footer>
 
+  <!-- Leaflet JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.3/leaflet.js"></script>
+  <!-- Custom JS -->
   <script src="LEP1.js"></script>
 </body>
 </html>
