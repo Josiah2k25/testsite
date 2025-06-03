@@ -13,7 +13,6 @@
   --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Enhanced Hero Section */
 .phase-hero {
   position: relative;
   background: linear-gradient(135deg, rgba(44, 62, 80, 0.95), rgba(52, 73, 94, 0.85)),
@@ -42,7 +41,7 @@
 }
 
 .phase-hero-overlay {
-  display: none; /* Using ::before instead */
+  display: none;
 }
 
 .phase-hero-content {
@@ -94,7 +93,6 @@
   }
 }
 
-/* Professional Phase Details Section */
 .phase-details-section {
   padding: 100px 0;
   background: linear-gradient(135deg, var(--white) 0%, #fafafa 100%);
@@ -148,7 +146,6 @@
   text-align: center;
 }
 
-/* Enhanced Download Button */
 .document-download {
   width: 100%;
   margin: 40px 0;
@@ -202,7 +199,6 @@
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
-/* Premium Map Section */
 .map-wrapper {
   padding: 120px 0;
   background: linear-gradient(135deg, #f1f3f4 0%, #e8eaf1 100%);
@@ -318,6 +314,7 @@
   height: 100%;
   background: linear-gradient(135deg, #f8f9fa, #e9ecef);
   position: relative;
+  z-index: 1;
 }
 
 .map-address {
@@ -345,7 +342,6 @@
   font-size: 16px;
 }
 
-/* Responsive Design */
 @media (max-width: 1200px) {
   .map-container {
     width: 90%;
@@ -369,3 +365,54 @@
   
   .map-container {
     width: 95%;
+    height: 400px;
+  }
+  
+  .download-btn {
+    padding: 16px 32px;
+    font-size: 14px;
+    min-width: 250px;
+  }
+  
+  .map-address {
+    font-size: 1rem;
+    padding: 12px 24px;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .phase-hero {
+    padding: 120px 0 80px;
+  }
+  
+  .phase-details-section {
+    padding: 60px 0;
+  }
+  
+  .map-wrapper {
+    padding: 60px 0;
+  }
+  
+  .map-container {
+    width: 98%;
+    height: 350px;
+    border: 4px solid var(--white);
+    border-radius: 16px;
+  }
+  
+  .download-btn {
+    padding: 14px 28px;
+    font-size: 13px;
+    min-width: 220px;
+  }
+  
+  .section-header {
+    margin-bottom: 40px;
+  }
+  
+  .map-heading {
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+  }
+}
