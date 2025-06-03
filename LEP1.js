@@ -1,11 +1,20 @@
 document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(initializeMap, 100);
+    addMapStyles();
+    setTimeout(initializeMap, 500);
+    setupScrollEffects();
 });
 
 function initializeMap() {
     const mapContainer = document.getElementById('map');
     
     if (!mapContainer) {
+        console.error('Map container not found');
+        return;
+    }
+    
+    if (typeof L === 'undefined') {
+        console.error('Leaflet library not loaded');
+        showMapFallback();
         return;
     }
     
@@ -16,12 +25,17 @@ function initializeMap() {
             center: jupiterStreetCoords,
             zoom: 16,
             zoomControl: true,
-            scrollWheelZoom: true
+            scrollWheelZoom: true,
+            touchZoom: true,
+            doubleClickZoom: true,
+            boxZoom: true,
+            keyboard: true
         });
         
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/contributors">OpenStreetMap</a> contributors',
-            maxZoom: 19
+            maxZoom: 19,
+            minZoom: 10
         }).addTo(map);
         
         const customIcon = L.divIcon({
@@ -64,34 +78,75 @@ function initializeMap() {
         marker.bindPopup(popupContent, {
             maxWidth: 350,
             minWidth: 280,
-            className: 'custom-popup'
+            className: 'custom-popup',
+            closeButton: true,
+            autoClose: false,
+            closeOnEscapeKey: true
         });
-        
-        marker.openPopup();
-        
-        addMapStyles();
         
         setTimeout(() => {
             map.invalidateSize();
-        }, 100);
+            marker.openPopup();
+        }, 200);
         
         window.lunarEstatesMap = map;
         window.lunarEstatesMarker = marker;
         
     } catch (error) {
+        console.error('Map initialization error:', error);
+        showMapFallback();
+    }
+}
+
+function showMapFallback() {
+    const mapContainer = document.getElementById('map');
+    if (mapContainer) {
         mapContainer.innerHTML = `
             <div class="map-fallback">
                 <i class="fas fa-map-marker-alt"></i>
                 <h3>Lunar Estates Phase 1</h3>
                 <p>Jupiter Street, Brownsville, TX 78521</p>
                 <p>Interactive map temporarily unavailable</p>
+                <a href="Lunar Estates Phase I CCRs.PDF" class="fallback-download" download>
+                    <i class="fas fa-download"></i>
+                    Download Deed Restrictions
+                </a>
             </div>
         `;
     }
 }
 
+function setupScrollEffects() {
+    const navbar = document.querySelector('.navbar');
+    const backToTopBtn = document.getElementById('back-to-top');
+    
+    window.addEventListener('scroll', function() {
+        const scrollY = window.scrollY;
+        
+        if (navbar) {
+            navbar.classList.toggle('scrolled', scrollY > 50);
+        }
+        
+        if (backToTopBtn) {
+            backToTopBtn.classList.toggle('show', scrollY > 300);
+        }
+    });
+    
+    if (backToTopBtn) {
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+}
+
 function addMapStyles() {
+    if (document.getElementById('map-styles')) return;
+    
     const style = document.createElement('style');
+    style.id = 'map-styles';
     style.textContent = `
         .custom-marker {
             background: none;
@@ -126,15 +181,9 @@ function addMapStyles() {
         }
         
         @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-12px);
-            }
-            60% {
-                transform: translateY(-6px);
-            }
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-12px); }
+            60% { transform: translateY(-6px); }
         }
         
         @keyframes pulse {
@@ -174,7 +223,7 @@ function addMapStyles() {
         
         .map-popup {
             padding: 0;
-            font-family: 'Inter', 'Segoe UI', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
         
         .popup-header {
@@ -183,17 +232,6 @@ function addMapStyles() {
             text-align: center;
             position: relative;
             overflow: hidden;
-        }
-        
-        .popup-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-            opacity: 0.3;
         }
         
         .popup-header h3 {
@@ -300,6 +338,7 @@ function addMapStyles() {
             align-items: center;
             justify-content: center;
             height: 100%;
+            min-height: 400px;
             text-align: center;
             color: #666;
             background: linear-gradient(135deg, #f8f9fa, #e9ecef);
@@ -326,39 +365,30 @@ function addMapStyles() {
             color: #666;
             line-height: 1.5;
         }
+        
+        .fallback-download {
+            display: inline-flex;
+            align-items: center;
+            background: #c1743c;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .fallback-download:hover {
+            background: #a85e2d;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(193, 116, 60, 0.3);
+        }
+        
+        .fallback-download i {
+            margin-right: 8px;
+        }
     `;
     
     document.head.appendChild(style);
 }
-
-window.addEventListener('scroll', function() {
-    const navbar = document.querySelector('.navbar');
-    if (navbar) {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    }
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    const backToTopBtn = document.getElementById('back-to-top');
-    
-    if (backToTopBtn) {
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 300) {
-                backToTopBtn.classList.add('active');
-            } else {
-                backToTopBtn.classList.remove('active');
-            }
-        });
-        
-        backToTopBtn.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    }
-});
