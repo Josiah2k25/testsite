@@ -10,9 +10,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
+  <!-- Use CSS-only Font Awesome to avoid deprecated JavaScript -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="builderform.css" />
-    <link rel="stylesheet" href="footer.css" />
+  <link rel="stylesheet" href="footer.css" />
 </head>
 <body>
   <a href="#main-content" class="sr-only">Skip to main content</a>
@@ -45,7 +46,7 @@
         <div class="form-container">
           <div class="form-header">
             <h1 id="form-title">Builder Application Form</h1>
-            <p>Please complete and sign the form below to apply as a builder partner with Rio Tierra Real Estate!</p>
+            <p>Please complete and sign the form below to apply as a builder partner with Rio Tierra Real Estate.</p>
           </div>
           
           <div class="adobe-form-container" id="form-container">
@@ -159,6 +160,6 @@
     </button>
   </footer>
 
-  <script src="builderform.js"></script>
+  <script src="builder-script.js"></script>
 </body>
 </html>
