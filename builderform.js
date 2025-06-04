@@ -1,4 +1,4 @@
-// Modern JavaScript with no deprecated APIs
+// Modern JavaScript with no deprecated APIs - Fixed Version
 (function() {
   'use strict';
 
@@ -82,13 +82,7 @@
     });
   }
 
-  // Mobile menu functionality
-  function initializeMobileMenu() {
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const navbarLinks = document.querySelector('.navbar-links');
-    
-    if (!mobileMenuBtn || !navbarLinks) return;
-
+  // Mobile menu functionality - FIXED: Removed duplicate function
   function initializeMobileMenu() {
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navbarLinks = document.querySelector('.navbar-links');
@@ -129,6 +123,9 @@
     
     if (!formContainer) return;
 
+    let formLoaded = false;
+    let formLoadTimeout;
+
     // Responsive iframe sizing
     function resizeForm() {
       const iframe = formContainer.querySelector('iframe');
@@ -151,10 +148,10 @@
       resizeTimeout = setTimeout(resizeForm, 150);
     });
 
-    // Handle form completion messages
+    // Handle form completion messages with proper origin checking
     window.addEventListener('message', function(event) {
-      // Verify origin for security
-      if (!event.origin.includes('adobe.com')) return;
+      // Strict origin verification for security
+      if (!event.origin.includes('documents.adobe.com')) return;
       
       try {
         let data;
@@ -172,24 +169,26 @@
       }
     });
 
-    // Form load timeout fallback
-    setTimeout(function() {
-      const iframe = formContainer.querySelector('iframe');
-      if (iframe && !iframe.contentDocument && formFallback) {
+    // FIXED: Improved form load detection without deprecated contentDocument
+    formLoadTimeout = setTimeout(function() {
+      if (!formLoaded && formFallback) {
         showFormFallback();
       }
     }, 10000); // 10 second timeout
+
+    // Track form load status
+    window.handleIframeLoad = function() {
+      formLoaded = true;
+      clearTimeout(formLoadTimeout);
+      console.log('Form loaded successfully');
+    };
+
+    window.handleIframeError = function() {
+      formLoaded = false;
+      clearTimeout(formLoadTimeout);
+      showFormFallback();
+    };
   }
-
-  // Global iframe load handler
-  window.handleIframeLoad = function() {
-    console.log('Form loaded successfully');
-  };
-
-  // Global iframe error handler
-  window.handleIframeError = function() {
-    showFormFallback();
-  };
 
   function showFormFallback() {
     const formFallback = document.getElementById('form-fallback');
@@ -227,6 +226,24 @@
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     `;
 
+    // FIXED: Removed inline onclick handler
+    const closeBtn = document.createElement('button');
+    closeBtn.style.cssText = `
+      background: #c1743c;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    `;
+    closeBtn.textContent = 'Close';
+    closeBtn.addEventListener('click', function() {
+      if (overlay.parentNode) {
+        overlay.remove();
+      }
+    });
+
     message.innerHTML = `
       <div style="color: #c1743c; font-size: 3rem; margin-bottom: 20px;">
         <i class="fas fa-check-circle"></i>
@@ -235,12 +252,9 @@
       <p style="color: #6b7280; margin-bottom: 25px; line-height: 1.6;">
         Thank you for your builder application. We'll review your submission and contact you within 2-3 business days.
       </p>
-      <button onclick="this.parentElement.parentElement.remove()" 
-              style="background: #c1743c; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-weight: 600;">
-        Close
-      </button>
     `;
 
+    message.appendChild(closeBtn);
     overlay.appendChild(message);
     document.body.appendChild(overlay);
 
@@ -250,6 +264,9 @@
         overlay.remove();
       }
     }, 10000);
+
+    // Focus management
+    closeBtn.focus();
   }
 
   // Accessibility improvements
@@ -272,7 +289,7 @@
       // Tab trap for mobile menu
       const navbarLinks = document.querySelector('.navbar-links');
       if (navbarLinks && navbarLinks.classList.contains('active') && e.key === 'Tab') {
-        const focusableElements = navbarLinks.querySelectorAll('a');
+        const focusableElements = navbarLinks.querySelectorAll('a, button');
         const firstElement = focusableElements[0];
         const lastElement = focusableElements[focusableElements.length - 1];
 
@@ -284,19 +301,27 @@
           firstElement.focus();
         }
       }
+
+      // Close modals on escape
+      if (e.key === 'Escape') {
+        const modal = document.querySelector('[style*="position: fixed"]');
+        if (modal) {
+          modal.remove();
+        }
+      }
     });
   }
 
-  // Error handling for uncaught errors
+  // Modern error handling
   window.addEventListener('error', function(e) {
     console.error('JavaScript error:', e.error);
-    // Don't show errors to users, just log them
+    // Log but don't expose errors to users
   });
 
   // Handle unhandled promise rejections
   window.addEventListener('unhandledrejection', function(e) {
     console.error('Unhandled promise rejection:', e.reason);
-    e.preventDefault(); // Prevent the default browser behavior
+    e.preventDefault(); // Prevent default browser behavior
   });
 
 })();
