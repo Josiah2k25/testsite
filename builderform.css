@@ -47,12 +47,13 @@ body {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: #f5f1eb;
+  background: rgba(245, 241, 235, 0.95);
   border-bottom: 1px solid var(--border-color);
   padding: 0;
   box-shadow: var(--shadow-sm);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  transition: var(--transition);
 }
 
 .navbar.solid {
@@ -154,6 +155,7 @@ body {
   background: linear-gradient(135deg, var(--primary-dark), #955129);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
+  color: #ffffff;
 }
 
 .navbar-cta:active {
@@ -246,12 +248,54 @@ body {
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow-sm);
   background: var(--bg-white);
+  position: relative;
 }
 
 .adobe-form-container iframe {
   width: 100%;
   height: 100%;
   border: none;
+}
+
+.form-fallback {
+  display: none;
+  padding: 40px;
+  text-align: center;
+  background: var(--bg-light);
+  border-radius: var(--border-radius);
+  border: 2px dashed var(--border-color);
+}
+
+.form-fallback.show {
+  display: block;
+}
+
+.form-fallback h3 {
+  color: var(--primary);
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.form-fallback p {
+  color: var(--text-medium);
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.form-fallback a {
+  display: inline-block;
+  background: var(--primary);
+  color: white;
+  padding: 12px 24px;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.form-fallback a:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
 }
 
 .form-footer {
@@ -281,7 +325,6 @@ body {
   text-underline-offset: 2px;
 }
 
-/* Footer Styles */
 .footer {
   background: var(--text-dark);
   color: #ffffff;
@@ -300,7 +343,9 @@ body {
 
 .footer-logo img {
   height: 60px;
+  width: auto;
   margin-bottom: 20px;
+  filter: brightness(0) invert(1);
 }
 
 .footer-desc {
@@ -330,6 +375,7 @@ body {
 .social-icon:hover {
   background: var(--primary-dark);
   transform: translateY(-3px);
+  color: #ffffff;
 }
 
 .footer-title {
@@ -373,6 +419,16 @@ body {
 .contact-info p {
   color: #ccc;
   margin: 0;
+}
+
+.contact-info a {
+  color: #ccc;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.contact-info a:hover {
+  color: var(--primary);
 }
 
 .footer-bottom {
@@ -457,7 +513,8 @@ body {
     top: 85px;
     left: 0;
     right: 0;
-    background: #f5f1eb;
+    background: rgba(245, 241, 235, 0.98);
+    backdrop-filter: blur(10px);
     flex-direction: column;
     padding: 30px;
     box-shadow: var(--shadow-md);
