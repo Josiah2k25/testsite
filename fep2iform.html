@@ -47,7 +47,8 @@
       margin: 0 auto;
       padding: 0 24px;
     }
-.navbar {
+
+   .navbar {
   position: fixed;
   top: 0;
   left: 0;
@@ -167,7 +168,6 @@
 .navbar-cta:active {
   transform: translateY(0);
 }
-
 .mobile-menu-btn {
   display: none;
   flex-direction: column;
@@ -466,7 +466,7 @@
             </div>
             <div class="contact-info">
               <i class="fas fa-phone-alt contact-icon"></i>
-              <p>+1 (956) 555-1234</p>
+              <p>+1 (956) 555-1111</p>
             </div>
             <div class="contact-info">
               <i class="fas fa-envelope contact-icon"></i>
@@ -497,5 +497,23 @@
     </button>
   </footer>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+      const navbarLinks = document.querySelector('.navbar-links');
+      
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenuBtn.classList.toggle('active');
+        navbarLinks.classList.toggle('active');
+      });
+      
+      document.addEventListener('click', function(e) {
+        if (!mobileMenuBtn.contains(e.target) && !navbarLinks.contains(e.target)) {
+          mobileMenuBtn.classList.remove('active');
+          navbarLinks.classList.remove('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
