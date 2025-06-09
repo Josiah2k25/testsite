@@ -4,19 +4,381 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Rio Tierra | Individual Application Form</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="builderapp.css" />
-  <link rel="stylesheet" href="builderform.css" />
-  <link rel="stylesheet" href="footer.css" /> 
+  
+  <link rel="preload" href="Rio Tierra Logo.webp" as="image">
+  <link rel="preload" href="https://na1.documents.adobe.com/public/esignWidget?wid=CBFCIBAA3AAABLblqZhCcJR3W2EhyyDrJ9mCOnu4TgY8CD-7Tg3o587wfuTSUkHMshCxbu-YNm-QyhLiEyEQ*&hosted=false" as="document">
+  
+  <style>
+    :root {
+      --primary: #c1743c;
+      --primary-dark: #a85e2d;
+      --primary-light: #d4896b;
+      --secondary: #2d4a8a;
+      --text-dark: #1a1a1a;
+      --text-medium: #4a4a4a;
+      --text-light: #6b7280;
+      --border-color: #e5e7eb;
+      --border-light: #f3f4f6;
+      --bg-light: #fafafa;
+      --bg-white: #ffffff;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.12);
+      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      --border-radius: 8px;
+      --border-radius-lg: 12px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background-color: var(--bg-white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+   .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(245, 241, 235, 0.95);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0;
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: var(--transition);
+}
+
+.navbar.solid {
+  background: #f5f1eb;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 18px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+}
+
+.navbar-brand {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: var(--transition);
+}
+
+.navbar-brand:hover {
+  transform: translateY(-1px);
+}
+
+.navbar-logo {
+  height: 45px;
+  width: auto;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+  gap: 48px;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: var(--text-medium);
+  font-weight: 500;
+  font-size: 15px;
+  transition: var(--transition);
+  position: relative;
+  padding: 12px 0;
+  letter-spacing: 0.01em;
+}
+
+.navbar-links a:hover {
+  color: var(--text-dark);
+}
+
+.navbar-links a.active {
+  color: var(--text-dark);
+  font-weight: 600;
+  position: relative;
+}
+
+.navbar-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  border-radius: 1px;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.navbar-cta {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #ffffff;
+  padding: 12px 28px;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: var(--transition);
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  letter-spacing: 0.01em;
+}
+
+.navbar-cta:hover {
+  background: linear-gradient(135deg, var(--primary-dark), #955129);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  color: #ffffff;
+}
+
+.navbar-cta:active {
+  transform: translateY(0);
+}
+.mobile-menu-btn {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+}
+
+.mobile-menu-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.mobile-menu-btn span {
+  width: 24px;
+  height: 2px;
+  background: #1a1a1a;
+  margin: 3px 0;
+  transition: all 0.25s ease;
+  border-radius: 1px;
+}
+
+.mobile-menu-btn.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-btn.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 15px 30px;
+  }
+  
+  .navbar-links {
+    position: fixed;
+    top: 73px;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.25s ease;
+    gap: 25px;
+  }
+  
+  .navbar-links.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .navbar-links a.active::after {
+    bottom: -8px;
+  }
+  
+  .mobile-menu-btn {
+    display: flex;
+  }
+  
+  .navbar-cta {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-container {
+    padding: 12px 20px;
+  }
+  
+  .navbar-logo {
+    height: 35px;
+  }
+  
+  .navbar-links {
+    top: 68px;
+  }
+}
+
+    .form-section {
+      padding: 120px 0 100px;
+      min-height: calc(100vh - 200px);
+      background: linear-gradient(135deg, var(--bg-light) 0%, #f8f9fa 100%);
+    }
+
+    .form-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: var(--bg-white);
+      border-radius: var(--border-radius-lg);
+      box-shadow: var(--shadow-lg);
+      padding: 50px;
+      width: 100%;
+      border: 1px solid var(--border-light);
+    }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 30px;
+      border-bottom: 2px solid var(--border-light);
+    }
+
+    .form-header h1 {
+      font-size: 2.75rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .adobe-form-container {
+      margin: 30px 0;
+      height: 850px;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      background: var(--bg-white);
+      position: relative;
+    }
+
+    .adobe-form-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .form-footer {
+      margin-top: 40px;
+      text-align: center;
+      padding-top: 30px;
+      border-top: 2px solid var(--border-light);
+    }
+
+    .form-footer p {
+      color: var(--text-light);
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    .form-footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .form-section {
+        padding: 100px 0 70px;
+      }
+      
+      .form-container {
+        padding: 35px 25px;
+        margin: 0 15px;
+      }
+      
+      .form-header h1 {
+        font-size: 2.25rem;
+      }
+      
+      .adobe-form-container {
+        height: 650px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .form-section {
+        padding: 85px 0 60px;
+      }
+      
+      .form-container {
+        padding: 25px 20px;
+        margin: 0 10px;
+      }
+      
+      .form-header h1 {
+        font-size: 2rem;
+      }
+      
+      .adobe-form-container {
+        height: 550px;
+      }
+    }
+  </style>
+  
+  <link rel="preload" href="footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="footer.css"></noscript>
 </head>
 <body>
-  <!-- Navbar -->
   <nav class="navbar">
     <div class="navbar-container">
       <a href="index.html" class="navbar-brand">
-        <img src="https://assets.onecompiler.app/43hc69vrc/43hc638r5/IMG_0002.png" alt="Rio Tierra Logo" class="navbar-logo">
+        <img src="Rio Tierra Logo.webp" 
+             alt="Rio Tierra Logo" 
+             class="navbar-logo" 
+             width="65" 
+             height="65">
       </a>
       <div class="navbar-links">
         <a href="index.html">Home</a>
@@ -25,7 +387,7 @@
       </div>
       <div class="navbar-right">
         <a href="#contact" class="navbar-cta">Get In Touch</a>
-        <button class="mobile-menu-btn">
+        <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
           <span></span>
           <span></span>
           <span></span>
@@ -34,7 +396,6 @@
     </div>
   </nav>
 
-  <!-- Form Section -->
   <section class="form-section">
     <div class="container">
       <div class="form-container">
@@ -43,8 +404,13 @@
         </div>
         
         <div class="adobe-form-container">
-          <!-- Adobe Sign Form Widget -->
-<iframe src="https://na1.documents.adobe.com/public/esignWidget?wid=CBFCIBAA3AAABLblqZhCcJR3W2EhyyDrJ9mCOnu4TgY8CD-7Tg3o587wfuTSUkHMshCxbu-YNm-QyhLiEyEQ*&hosted=false" width="100%" height="100%" frameborder="0" style="border: 0; overflow: hidden; min-height: 500px; min-width: 600px;"></iframe>
+          <iframe src="https://na1.documents.adobe.com/public/esignWidget?wid=CBFCIBAA3AAABLblqZhCcJR3W2EhyyDrJ9mCOnu4TgY8CD-7Tg3o587wfuTSUkHMshCxbu-YNm-QyhLiEyEQ*&hosted=false"
+                  title="Lunar Estates 2 Adobe Form"
+                  width="100%" 
+                  height="100%" 
+                  frameborder="0" 
+                  style="border: 0; overflow: hidden; min-height: 500px; min-width: 600px;"
+                  loading="eager"></iframe>
         </div>
         
         <div class="form-footer">
@@ -54,16 +420,19 @@
     </div>
   </section>
   
-  <!-- Footer -->
   <footer class="footer">
     <div class="footer-top">
       <div class="container">
         <div class="footer-grid">
           <div class="footer-about">
             <div class="footer-logo">
-              <img src="https://assets.onecompiler.app/43hc69vrc/43hc638r5/IMG_0002.png" alt="Rio Tierra Logo">
+              <img src="Rio Tierra Logo.webp" 
+                   alt="Rio Tierra Logo" 
+                   class="navbar-logo" 
+                   width="65" 
+                   height="65">
             </div>
-            <p class="footer-desc">Rio Tierra Real Estate specializes in creating exceptional communities with a focus on quality, sustainability, and innovative design. Our vision is to build developments that enhance lives and create lasting value.</p>
+            <p class="footer-desc">Rio Tierra Real Estate specializes in creating exceptional communities with a focus on quality, sustainability, and innovative design.</p>
             <div class="footer-social">
               <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
               <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
@@ -97,7 +466,7 @@
             </div>
             <div class="contact-info">
               <i class="fas fa-phone-alt contact-icon"></i>
-              <p>+1 (956) 888-1234</p>
+              <p>+1 (956) 555-1111</p>
             </div>
             <div class="contact-info">
               <i class="fas fa-envelope contact-icon"></i>
@@ -123,10 +492,28 @@
         </div>
       </div>
     </div>
-    <button id="back-to-top" class="back-to-top-btn">
+    <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">
       <i class="fas fa-chevron-up"></i>
     </button>
   </footer>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+      const navbarLinks = document.querySelector('.navbar-links');
+      
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenuBtn.classList.toggle('active');
+        navbarLinks.classList.toggle('active');
+      });
+      
+      document.addEventListener('click', function(e) {
+        if (!mobileMenuBtn.contains(e.target) && !navbarLinks.contains(e.target)) {
+          mobileMenuBtn.classList.remove('active');
+          navbarLinks.classList.remove('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
