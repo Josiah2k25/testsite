@@ -4,15 +4,273 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Rio Tierra | Individual Application Form</title>
-  <link rel="stylesheet" href="builderform.css" />
-  <link rel="stylesheet" href="footer.css" /> 
+  
+  <link rel="preload" href="Rio Tierra Logo.webp" as="image">
+  <link rel="preload" href="https://na1.documents.adobe.com/public/esignWidget?wid=CBFCIBAA3AAABLblqZhBjOI8seAjTVryITiHEKXECK3mk11hIVlIvydcj7HnKMaC7XzE7NMVj3ujwOOV6NSc*&hosted=false" as="document">
+  
+  <style>
+    :root {
+      --primary: #c1743c;
+      --primary-dark: #a85e2d;
+      --primary-light: #d4896b;
+      --secondary: #2d4a8a;
+      --text-dark: #1a1a1a;
+      --text-medium: #4a4a4a;
+      --text-light: #6b7280;
+      --border-color: #e5e7eb;
+      --border-light: #f3f4f6;
+      --bg-light: #fafafa;
+      --bg-white: #ffffff;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.12);
+      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      --border-radius: 8px;
+      --border-radius-lg: 12px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background-color: var(--bg-white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(245, 241, 235, 0.95);
+      border-bottom: 1px solid var(--border-color);
+      backdrop-filter: blur(10px);
+    }
+
+    .navbar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 18px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar-brand {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-logo {
+      height: 45px;
+      width: 45px;
+      object-fit: contain;
+    }
+
+    .navbar-links {
+      display: flex;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .navbar-links a {
+      text-decoration: none;
+      color: var(--text-medium);
+      font-weight: 500;
+      font-size: 15px;
+    }
+
+    .navbar-links a.active {
+      color: var(--text-dark);
+      font-weight: 600;
+    }
+
+    .navbar-cta {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #ffffff;
+      padding: 12px 28px;
+      border-radius: var(--border-radius);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      flex-direction: column;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .mobile-menu-btn span {
+      width: 24px;
+      height: 2px;
+      background: var(--text-dark);
+      margin: 3px 0;
+    }
+
+    .form-section {
+      padding: 120px 0 100px;
+      min-height: calc(100vh - 200px);
+      background: linear-gradient(135deg, var(--bg-light) 0%, #f8f9fa 100%);
+    }
+
+    .form-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: var(--bg-white);
+      border-radius: var(--border-radius-lg);
+      box-shadow: var(--shadow-lg);
+      padding: 50px;
+      width: 100%;
+      border: 1px solid var(--border-light);
+    }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 30px;
+      border-bottom: 2px solid var(--border-light);
+    }
+
+    .form-header h1 {
+      font-size: 2.75rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .adobe-form-container {
+      margin: 30px 0;
+      height: 850px;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      background: var(--bg-white);
+      position: relative;
+    }
+
+    .adobe-form-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .form-footer {
+      margin-top: 40px;
+      text-align: center;
+      padding-top: 30px;
+      border-top: 2px solid var(--border-light);
+    }
+
+    .form-footer p {
+      color: var(--text-light);
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    .form-footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .navbar-container {
+        padding: 15px 30px;
+      }
+      
+      .navbar-links {
+        position: fixed;
+        top: 85px;
+        left: 0;
+        right: 0;
+        background: rgba(245, 241, 235, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        padding: 30px;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        gap: 25px;
+      }
+      
+      .mobile-menu-btn {
+        display: flex;
+      }
+      
+      .navbar-cta {
+        display: none;
+      }
+      
+      .form-section {
+        padding: 100px 0 70px;
+      }
+      
+      .form-container {
+        padding: 35px 25px;
+        margin: 0 15px;
+      }
+      
+      .form-header h1 {
+        font-size: 2.25rem;
+      }
+      
+      .adobe-form-container {
+        height: 650px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .form-section {
+        padding: 85px 0 60px;
+      }
+      
+      .form-container {
+        padding: 25px 20px;
+        margin: 0 10px;
+      }
+      
+      .form-header h1 {
+        font-size: 2rem;
+      }
+      
+      .adobe-form-container {
+        height: 550px;
+      }
+    }
+  </style>
+  
+  <link rel="preload" href="footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="footer.css"></noscript>
 </head>
 <body>
-  <!-- Navbar -->
   <nav class="navbar">
     <div class="navbar-container">
       <a href="index.html" class="navbar-brand">
-      <img src="Rio Tierra Logo.webp" alt="Rio Tierra Logo" class="navbar-logo" width="65" height="65">
+        <img src="Rio Tierra Logo.webp" 
+             alt="Rio Tierra Logo" 
+             class="navbar-logo" 
+             width="45" 
+             height="45">
       </a>
       <div class="navbar-links">
         <a href="index.html">Home</a>
@@ -30,7 +288,6 @@
     </div>
   </nav>
 
-  <!-- Form Section -->
   <section class="form-section">
     <div class="container">
       <div class="form-container">
@@ -39,8 +296,12 @@
         </div>
         
         <div class="adobe-form-container">
-          <!-- Adobe Sign Form Widget -->
-<iframe src="https://na1.documents.adobe.com/public/esignWidget?wid=CBFCIBAA3AAABLblqZhBjOI8seAjTVryITiHEKXECK3mk11hIVlIvydcj7HnKMaC7XzE7NMVj3ujwOOV6NSc*&hosted=false" width="100%" height="100%" frameborder="0" style="border: 0; overflow: hidden; min-height: 500px; min-width: 600px;"></iframe>
+          <iframe src="https://na1.documents.adobe.com/public/esignWidget?wid=CBFCIBAA3AAABLblqZhBjOI8seAjTVryITiHEKXECK3mk11hIVlIvydcj7HnKMaC7XzE7NMVj3ujwOOV6NSc*&hosted=false" 
+                  width="100%" 
+                  height="100%" 
+                  frameborder="0" 
+                  style="border: 0; overflow: hidden; min-height: 500px; min-width: 600px;"
+                  loading="eager"></iframe>
         </div>
         
         <div class="form-footer">
@@ -50,16 +311,19 @@
     </div>
   </section>
   
-  <!-- Footer -->
   <footer class="footer">
     <div class="footer-top">
       <div class="container">
         <div class="footer-grid">
           <div class="footer-about">
             <div class="footer-logo">
-              <img src="https://assets.onecompiler.app/43hc69vrc/43hc638r5/IMG_0002.png" alt="Rio Tierra Logo">
+              <img src="Rio Tierra Logo.webp" 
+                   alt="Rio Tierra Logo" 
+                   class="navbar-logo" 
+                   width="45" 
+                   height="45">
             </div>
-            <p class="footer-desc">Rio Tierra Real Estate specializes in creating exceptional communities with a focus on quality, sustainability, and innovative design. Our vision is to build developments that enhance lives and create lasting value.</p>
+            <p class="footer-desc">Rio Tierra Real Estate specializes in creating exceptional communities with a focus on quality, sustainability, and innovative design.</p>
             <div class="footer-social">
               <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
               <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
@@ -93,7 +357,7 @@
             </div>
             <div class="contact-info">
               <i class="fas fa-phone-alt contact-icon"></i>
-              <p>+1 (956) 555-1111</p>
+              <p>+1 (956) 555-1234</p>
             </div>
             <div class="contact-info">
               <i class="fas fa-envelope contact-icon"></i>
