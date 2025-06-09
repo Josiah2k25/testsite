@@ -197,7 +197,6 @@
   transform: rotate(-45deg) translate(7px, -6px);
 }
 
-/* Mobile responsive */
 @media (max-width: 768px) {
   .navbar-container {
     padding: 15px 30px;
@@ -252,22 +251,6 @@
     top: 68px;
   }
 }
-
-    .mobile-menu-btn {
-      display: none;
-      flex-direction: column;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 8px;
-    }
-
-    .mobile-menu-btn span {
-      width: 24px;
-      height: 2px;
-      background: var(--text-dark);
-      margin: 3px 0;
-    }
 
     .form-section {
       padding: 120px 0 100px;
@@ -339,33 +322,6 @@
     }
 
     @media (max-width: 768px) {
-      .navbar-container {
-        padding: 15px 30px;
-      }
-      
-      .navbar-links {
-        position: fixed;
-        top: 85px;
-        left: 0;
-        right: 0;
-        background: rgba(245, 241, 235, 0.98);
-        backdrop-filter: blur(10px);
-        flex-direction: column;
-        padding: 30px;
-        transform: translateY(-100%);
-        opacity: 0;
-        visibility: hidden;
-        gap: 25px;
-      }
-      
-      .mobile-menu-btn {
-        display: flex;
-      }
-      
-      .navbar-cta {
-        display: none;
-      }
-      
       .form-section {
         padding: 100px 0 70px;
       }
@@ -424,7 +380,7 @@
       </div>
       <div class="navbar-right">
         <a href="#contact" class="navbar-cta">Get In Touch</a>
-        <button class="mobile-menu-btn">
+        <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
           <span></span>
           <span></span>
           <span></span>
@@ -529,7 +485,7 @@
         </div>
       </div>
     </div>
-    <button id="back-to-top" class="back-to-top-btn">
+    <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">
       <i class="fas fa-chevron-up"></i>
     </button>
   </footer>
