@@ -4,17 +4,242 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Rio Tierra | Sales</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="sales.css" />
-  <link rel="stylesheet" href="footer.css" />
+  
+  <link rel="preload" href="Rio Tierra Logo.webp" as="image">
+  <link rel="preload" href="Sales Background.webp" as="image">
+  
+  <style>
+    :root {
+      --primary: #c1743c;
+      --primary-dark: #a85e2d;
+      --text-dark: #1a1a1a;
+      --text-medium: #4a4a4a;
+      --text-light: #6b7280;
+      --border-color: #e5e7eb;
+      --bg-white: #ffffff;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+      --transition: all 0.25s ease;
+      --border-radius: 8px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background-color: var(--bg-white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar-brand {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-logo {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .navbar-links {
+      display: flex;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .navbar-links a {
+      text-decoration: none;
+      color: #6b7280;
+      font-weight: 500;
+      font-size: 16px;
+      padding: 12px 0;
+    }
+
+    .navbar-links a.active {
+      color: #1a1a1a;
+      font-weight: 600;
+      position: relative;
+    }
+
+    .navbar-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -16px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: #c1743c;
+      border-radius: 2px;
+    }
+
+    .navbar-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .navbar-cta {
+      background: #c1743c;
+      color: #ffffff;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      flex-direction: column;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .mobile-menu-btn span {
+      width: 24px;
+      height: 2px;
+      background: #1a1a1a;
+      margin: 3px 0;
+    }
+
+    .sales-hero {
+      position: relative;
+      background-image: url('');
+      background-size: cover;
+      background-position: center;
+      padding: 150px 0 100px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .sales-hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .sales-hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .sales-hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .sales-hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      color: #ffffff;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    @media (max-width: 768px) {
+      .navbar-container {
+        padding: 15px 30px;
+      }
+      
+      .navbar-links {
+        position: fixed;
+        top: 73px;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        padding: 30px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.25s ease;
+        gap: 25px;
+      }
+      
+      .navbar-links.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      .mobile-menu-btn {
+        display: flex;
+      }
+      
+      .navbar-cta {
+        display: none;
+      }
+
+      .sales-hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .sales-hero {
+        padding: 120px 0 80px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .sales-hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+  
+  <link rel="preload" href="sales.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="sales.css"></noscript>
+  
+  <link rel="preload" href="footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="footer.css"></noscript>
 </head>
 <body>
-  <!-- Navbar -->
   <nav class="navbar">
     <div class="navbar-container">
       <a href="index.html" class="navbar-brand">
-         <img src="Rio Tierra Logo.wepb" alt="Rio Tierra Logo" class="navbar-logo" width="65" height="65">
+        <img src="Rio Tierra Logo.webp" alt="Rio Tierra Logo" class="navbar-logo" width="65" height="65">
       </a>
       <div class="navbar-links">
         <a href="index.html">Home</a>
@@ -23,7 +248,7 @@
       </div>
       <div class="navbar-right">
         <a href="#contact" class="navbar-cta">Get In Touch</a>
-        <button class="mobile-menu-btn">
+        <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
           <span></span>
           <span></span>
           <span></span>
@@ -32,7 +257,6 @@
     </div>
   </nav>
 
-  <!-- Sales Hero Section -->
   <section class="sales-hero">
     <div class="sales-hero-overlay"></div>
     <div class="container">
@@ -43,7 +267,6 @@
     </div>
   </section>
 
-  <!-- Subdivisions Section -->
   <section class="subdivisions-section">
     <div class="container">
       <div class="section-header">
@@ -53,7 +276,6 @@
       </div>
 
       <div class="subdivisions-list">
-        <!-- Lunar Estates -->
         <div class="subdivision-item">
           <div class="subdivision-image">
             <img src="Apartments.webp" alt="Lunar Estates">
@@ -63,7 +285,7 @@
             <div class="title-underline"></div>
             <p class="subdivision-description">Integrated residential and retail spaces for modern living with premium amenities.</p>
             <div class="phases-wrapper">
-              <button class="phases-btn">View Phases <i class="fas fa-chevron-down"></i></button>
+              <button class="phases-btn" aria-label="View Lunar Estates phases">View Phases <i class="fas fa-chevron-down"></i></button>
               <div class="phases-dropdown">
                 <a href="LEP1.html">Phase 1</a>
                 <a href="LEP2.html">Phase 2</a>
@@ -72,7 +294,6 @@
           </div>
         </div>
         
-        <!-- Florida Estates -->
         <div class="subdivision-item">
           <div class="subdivision-image">
             <img src="Beach Home.webp" alt="Florida Estates">
@@ -80,9 +301,9 @@
           <div class="subdivision-details">
             <h3 class="subdivision-title">Florida Estates</h3>
             <div class="title-underline"></div>
-            <p class="subdivision-description"></p>
+            <p class="subdivision-description">Coastal living at its finest with waterfront views and luxury amenities.</p>
             <div class="phases-wrapper">
-              <button class="phases-btn">View Phases <i class="fas fa-chevron-down"></i></button>
+              <button class="phases-btn" aria-label="View Florida Estates phases">View Phases <i class="fas fa-chevron-down"></i></button>
               <div class="phases-dropdown">
                 <a href="FEP2.html">Phase 2 <span class="coming-soon">(Coming Soon)</span></a>
                 <a href="FEP3.html">Phase 3 <span class="coming-soon">(Coming Soon)</span></a>
@@ -91,7 +312,6 @@
           </div>
         </div>
         
-        <!-- Palmetto Grove -->
         <div class="subdivision-item">
           <div class="subdivision-image">
             <img src="Neigborhood.webp" alt="Palmetto Grove">
@@ -99,9 +319,9 @@
           <div class="subdivision-details">
             <h3 class="subdivision-title">Palmetto Grove</h3>
             <div class="title-underline"></div>
-            <p class="subdivision-description"></p>
+            <p class="subdivision-description">Family-friendly community with parks, recreation facilities, and top-rated schools nearby.</p>
             <div class="phases-wrapper">
-              <button class="phases-btn">View Phases <i class="fas fa-chevron-down"></i></button>
+              <button class="phases-btn" aria-label="View Palmetto Grove phases">View Phases <i class="fas fa-chevron-down"></i></button>
               <div class="phases-dropdown">
                 <a href="PGP3S1.html">Phase 3, Section 1 <span class="coming-soon">(Coming Soon)</span></a>
               </div>
@@ -112,10 +332,7 @@
     </div>
   </section>
 
-
-
-  <!-- Contact Section -->
- <section class="contact-section" id="contact">
+  <section class="contact-section" id="contact">
     <div class="container">
       <div class="contact-header">
         <div class="contact-title-small">GET IN TOUCH</div>
@@ -160,10 +377,10 @@
           <div class="connect-with-us">
             <h3>Connect With Us</h3>
             <div class="social-icons">
-              <a href="#" class="social-circle"><i class="fab fa-facebook-f"></i></a>
-              <a href="#" class="social-circle"><i class="fab fa-twitter"></i></a>
-              <a href="#" class="social-circle"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#" class="social-circle"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="social-circle" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social-circle" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-circle" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="social-circle" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             </div>
           </div>
         </div>
@@ -172,7 +389,6 @@
           <h2 class="form-title">Send Us a Message</h2>
           
           <form action="https://formspree.io/f/xanjwnrn" method="POST" class="contact-form">
-            <!-- Hidden fields for better email formatting -->
             <input type="hidden" name="_subject" value="New Contact Form Submission - Rio Tierra Sales">
             <input type="hidden" name="_captcha" value="false">
             
@@ -226,14 +442,13 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="footer-top">
       <div class="container">
         <div class="footer-grid">
           <div class="footer-about">
             <div class="footer-logo">
-              <img src="Rio Tierra Logo.wepb" alt="Rio Tierra Logo" width="70" height="70">
+              <img src="Rio Tierra Logo.webp" alt="Rio Tierra Logo" width="70" height="70">
             </div>
             <p class="footer-desc">Rio Tierra Real Estate specializes in creating exceptional communities with a focus on quality, sustainability, and innovative design.</p>
           </div>
@@ -284,11 +499,71 @@
         </div>
       </div>
     </div>
-    <button id="back-to-top" class="back-to-top-btn">
+    <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">
       <i class="fas fa-chevron-up"></i>
     </button>
   </footer>
 
-  <script src="sales.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const phaseButtons = document.querySelectorAll('.phases-btn');
+      
+      phaseButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          const dropdown = this.nextElementSibling;
+          dropdown.classList.toggle('active');
+          
+          phaseButtons.forEach(otherButton => {
+            if (otherButton !== button) {
+              const otherDropdown = otherButton.nextElementSibling;
+              if (otherDropdown.classList.contains('active')) {
+                otherDropdown.classList.remove('active');
+              }
+            }
+          });
+        });
+      });
+      
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.phases-wrapper')) {
+          document.querySelectorAll('.phases-dropdown').forEach(dropdown => {
+            dropdown.classList.remove('active');
+          });
+        }
+      });
+      
+      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+      const navbarLinks = document.querySelector('.navbar-links');
+      
+      if (mobileMenuBtn && navbarLinks) {
+        mobileMenuBtn.addEventListener('click', function() {
+          this.classList.toggle('active');
+          navbarLinks.classList.toggle('active');
+        });
+      }
+      
+      const backToTopBtn = document.getElementById('back-to-top');
+      
+      if (backToTopBtn) {
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 300) {
+            backToTopBtn.classList.add('active');
+          } else {
+            backToTopBtn.classList.remove('active');
+          }
+        });
+        
+        backToTopBtn.addEventListener('click', function() {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+      }
+    });
+  </script>
 </body>
 </html>
