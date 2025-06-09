@@ -47,23 +47,30 @@
       margin: 0 auto;
       padding: 0 24px;
     }
-
-    .navbar {
+.navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  background: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
+  background: rgba(245, 241, 235, 0.95);
+  border-bottom: 1px solid var(--border-color);
   padding: 0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: var(--transition);
+}
+
+.navbar.solid {
+  background: #f5f1eb;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .navbar-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 16px 40px;
+  padding: 18px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -74,7 +81,7 @@
   text-decoration: none;
   display: flex;
   align-items: center;
-  transition: all 0.25s ease;
+  transition: var(--transition);
 }
 
 .navbar-brand:hover {
@@ -82,9 +89,9 @@
 }
 
 .navbar-logo {
-  height: 40px;
+  height: 45px;
   width: auto;
-  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .navbar-links {
@@ -98,21 +105,21 @@
 
 .navbar-links a {
   text-decoration: none;
-  color: #6b7280;
+  color: var(--text-medium);
   font-weight: 500;
-  font-size: 16px;
-  transition: all 0.25s ease;
+  font-size: 15px;
+  transition: var(--transition);
   position: relative;
   padding: 12px 0;
   letter-spacing: 0.01em;
 }
 
 .navbar-links a:hover {
-  color: #1a1a1a;
+  color: var(--text-dark);
 }
 
 .navbar-links a.active {
-  color: #1a1a1a;
+  color: var(--text-dark);
   font-weight: 600;
   position: relative;
 }
@@ -120,13 +127,13 @@
 .navbar-links a.active::after {
   content: '';
   position: absolute;
-  bottom: -16px;
+  bottom: 0px;
   left: 0;
   right: 0;
   width: 100%;
-  height: 3px;
-  background: #c1743c;
-  border-radius: 2px;
+  height: 2px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  border-radius: 1px;
 }
 
 .navbar-right {
@@ -136,24 +143,24 @@
 }
 
 .navbar-cta {
-  background: #c1743c;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   color: #ffffff;
-  padding: 12px 24px;
-  border-radius: 8px;
+  padding: 12px 28px;
+  border-radius: var(--border-radius);
   text-decoration: none;
   font-weight: 600;
   font-size: 14px;
-  transition: all 0.25s ease;
+  transition: var(--transition);
   border: none;
   cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
   letter-spacing: 0.01em;
 }
 
 .navbar-cta:hover {
-  background: #a85e2d;
+  background: linear-gradient(135deg, var(--primary-dark), #955129);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-md);
   color: #ffffff;
 }
 
