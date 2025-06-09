@@ -33,7 +33,6 @@
 .footer-logo img {
   height: 65px;
   margin-bottom: 25px;
-  filter: brightness(0) invert(1);
 }
 
 .footer-desc {
