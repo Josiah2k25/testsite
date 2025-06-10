@@ -1,33 +1,813 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Rio Tierra | Lunar Estates Phase 1</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.3/leaflet.css" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="sales.css" />
-  <link rel="stylesheet" href="LEP1.css" />
-  <link rel="stylesheet" href="footer.css" /> 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lunar Estates Phase 1 - Premium residential development in Brownsville, TX. Download deed restrictions and explore our Jupiter Street location.">
+  <meta name="keywords" content="Lunar Estates, Phase 1, Brownsville TX, real estate, residential development, Jupiter Street">
+  <title>Lunar Estates Phase 1 | Rio Tierra Real Estate</title>
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="Rio Tierra Logo.png" as="image">
+  <link rel="preload" href="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" as="image">
+  
+  <!-- External CSS - only what's needed -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.3/leaflet.css" integrity="sha512-Zcn6bjR/8RZbLEpLIeOwNtzREBAJnUKESxces60Mpoj+2okopSAcSUIUOseddDm0cxnGQzxIR7vJgsLZbdLE3w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="footer.css">
+  
+  <style>
+    /* CSS Variables */
+    :root {
+      --primary: #c1743c;
+      --primary-dark: #a85e2d;
+      --primary-light: #d4925a;
+      --secondary: #2d4a8a;
+      --text-dark: #2c3e50;
+      --text-light: #7f8c8d;
+      --bg-light: #f8f9fa;
+      --white: #ffffff;
+      --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.08);
+      --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
+      --shadow-heavy: 0 20px 60px rgba(0, 0, 0, 0.15);
+      --transition: all 0.3s ease;
+      --header-height: 85px;
+      --container-max: 1400px;
+    }
+
+    /* Reset & Base */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Accessibility */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* Skip link for keyboard navigation */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 6px;
+      background: var(--primary);
+      color: var(--white);
+      padding: 8px;
+      text-decoration: none;
+      z-index: 10000;
+      border-radius: 4px;
+    }
+
+    .skip-link:focus {
+      top: 6px;
+    }
+
+    /* Layout */
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: transparent;
+      z-index: 1000;
+      transition: var(--transition);
+      height: var(--header-height);
+    }
+
+    .navbar.scrolled {
+      background: rgba(249, 245, 240, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+      padding: 0 2rem;
+      max-width: var(--container-max);
+      margin: 0 auto;
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .navbar-logo {
+      height: 65px;
+      width: auto;
+      transition: var(--transition);
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+    }
+
+    .navbar.scrolled .navbar-logo {
+      height: 55px;
+    }
+
+    .navbar-links {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+      list-style: none;
+    }
+
+    .navbar-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      position: relative;
+      padding: 1rem 0;
+      transition: var(--transition);
+    }
+
+    .navbar.scrolled .navbar-links a {
+      color: var(--text-dark);
+    }
+
+    .navbar-links a::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: var(--transition);
+      transform: translateX(-50%);
+    }
+
+    .navbar-links a:hover::before,
+    .navbar-links a.active::before {
+      width: 100%;
+    }
+
+    .navbar-links a:hover,
+    .navbar-links a.active,
+    .navbar-links a:focus {
+      color: var(--primary);
+      outline: none;
+    }
+
+    .navbar-links a:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    .navbar-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .navbar-cta {
+      background: var(--primary);
+      color: var(--white);
+      padding: 0.9rem 1.8rem;
+      border-radius: 6px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: var(--transition);
+      text-decoration: none;
+      border: none;
+    }
+
+    .navbar-cta:hover,
+    .navbar-cta:focus {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      color: var(--white);
+      outline: none;
+    }
+
+    .navbar-cta:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 30px;
+      height: 22px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .mobile-menu-btn span {
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: var(--white);
+      left: 0;
+      transition: var(--transition);
+      border-radius: 2px;
+    }
+
+    .navbar.scrolled .mobile-menu-btn span {
+      background-color: var(--text-dark);
+    }
+
+    .mobile-menu-btn span:nth-child(1) { top: 0; }
+    .mobile-menu-btn span:nth-child(2) { top: 10px; }
+    .mobile-menu-btn span:nth-child(3) { top: 20px; }
+
+    .mobile-menu-btn.active span:nth-child(1) {
+      transform: rotate(45deg);
+      top: 10px;
+    }
+
+    .mobile-menu-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .mobile-menu-btn.active span:nth-child(3) {
+      transform: rotate(-45deg);
+      top: 10px;
+    }
+
+    /* Phase Hero */
+    .phase-hero {
+      position: relative;
+      background: linear-gradient(135deg, rgba(44, 62, 80, 0.9), rgba(52, 73, 94, 0.8)),
+                  url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      padding: 180px 0 120px;
+      text-align: center;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .phase-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(193, 116, 60, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(193, 116, 60, 0.04) 0%, transparent 50%);
+      z-index: 1;
+    }
+
+    .phase-hero-content {
+      position: relative;
+      z-index: 2;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .phase-hero-content .subtitle {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--primary-light);
+      position: relative;
+      display: inline-block;
+    }
+
+    .phase-hero-content .subtitle::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+    }
+
+    .phase-hero-content h1 {
+      font-size: clamp(3rem, 6vw, 5rem);
+      margin-bottom: 24px;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -1px;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      line-height: 1.1;
+    }
+
+    /* Phase Details Section */
+    .phase-details-section {
+      padding: 100px 0;
+      background: linear-gradient(135deg, var(--white) 0%, var(--bg-light) 100%);
+      position: relative;
+    }
+
+    .phase-details-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-light), var(--secondary));
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      color: var(--text-dark);
+      margin-bottom: 20px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      background: linear-gradient(135deg, var(--text-dark), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      border-radius: 2px;
+    }
+
+    .phase-content {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* Document Download */
+    .document-download {
+      width: 100%;
+      margin: 40px 0;
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: var(--white);
+      padding: 20px 40px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-medium);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      min-width: 280px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .download-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .download-btn:hover::before {
+      left: 100%;
+    }
+
+    .download-btn:hover,
+    .download-btn:focus {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-heavy);
+      color: var(--white);
+      outline: none;
+    }
+
+    .download-btn:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    .download-btn i {
+      margin-right: 12px;
+      font-size: 18px;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    }
+
+    /* Map Section */
+    .map-wrapper {
+      padding: 120px 0;
+      background: linear-gradient(135deg, var(--bg-light) 0%, #e8eaf1 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-wrapper::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+      box-shadow: 0 2px 10px rgba(193, 116, 60, 0.3);
+    }
+
+    .map-heading {
+      font-size: clamp(2rem, 4vw, 2.5rem);
+      color: var(--text-dark);
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+      font-weight: 700;
+      padding-bottom: 20px;
+      letter-spacing: -1px;
+    }
+
+    .map-heading::before {
+      content: '📍';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: -40px;
+      font-size: 32px;
+      filter: drop-shadow(0 4px 12px rgba(193, 116, 60, 0.3));
+    }
+
+    .map-heading::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      border-radius: 2px;
+      box-shadow: 0 2px 8px rgba(193, 116, 60, 0.3);
+    }
+
+    .map-container {
+      width: 85%;
+      max-width: 1200px;
+      height: 500px;
+      margin: 0 auto 30px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 
+        0 25px 80px rgba(0, 0, 0, 0.15),
+        0 10px 40px rgba(0, 0, 0, 0.1),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+      border: 8px solid var(--white);
+      position: relative;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+    }
+
+    .map-container::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: -8px;
+      right: -8px;
+      bottom: -8px;
+      border-radius: 24px;
+      background: linear-gradient(45deg, var(--primary), var(--primary-light), var(--secondary));
+      z-index: -1;
+      opacity: 0.6;
+      transition: var(--transition);
+    }
+
+    .map-container:hover {
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 
+        0 35px 100px rgba(0, 0, 0, 0.2),
+        0 15px 50px rgba(0, 0, 0, 0.15),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+    }
+
+    .map-container:hover::before {
+      opacity: 0.8;
+      transform: scale(1.02);
+    }
+
+    #map {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--bg-light), #e9ecef);
+      position: relative;
+      z-index: 1;
+    }
+
+    .map-address {
+      text-align: center;
+      color: var(--text-light);
+      font-size: 1.2rem;
+      margin-top: 30px;
+      font-weight: 500;
+      position: relative;
+      padding: 16px 32px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 50px;
+      display: inline-block;
+      margin-left: 50%;
+      transform: translateX(-50%);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: var(--shadow-light);
+    }
+
+    .map-address::before {
+      content: '📍';
+      margin-right: 8px;
+      font-size: 16px;
+    }
+
+    /* Back to Top Button */
+    .back-to-top-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: var(--transition);
+      opacity: 0;
+      visibility: hidden;
+      z-index: 999;
+      border: none;
+      box-shadow: var(--shadow-heavy);
+    }
+
+    .back-to-top-btn.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top-btn:hover,
+    .back-to-top-btn:focus {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-heavy);
+      outline: none;
+    }
+
+    .back-to-top-btn:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    /* Map Popup Styles */
+    .custom-marker {
+      background: none;
+      border: none;
+    }
+
+    .marker-pin {
+      width: 40px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 32px;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      filter: drop-shadow(0 2px 8px rgba(193, 116, 60, 0.3));
+      animation: bounce 2s infinite;
+      position: relative;
+    }
+
+    .marker-pin::before {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, rgba(193, 116, 60, 0.3), transparent);
+      border-radius: 50%;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-12px); }
+      60% { transform: translateY(-6px); }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 0.4;
+        transform: translateX(-50%) scale(1);
+      }
+      50% {
+        opacity: 0.8;
+        transform: translateX(-50%) scale(1.2);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+      .map-container {
+        width: 90%;
+        height: 450px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar-cta {
+        display: none;
+      }
+
+      .navbar-links {
+        position: fixed;
+        top: var(--header-height);
+        right: -100%;
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        width: 85%;
+        height: calc(100vh - var(--header-height));
+        padding: 3rem 2rem;
+        gap: 2rem;
+        transition: var(--transition);
+        box-shadow: var(--shadow-heavy);
+        z-index: 100;
+      }
+
+      .navbar-links.active {
+        right: 0;
+      }
+
+      .navbar-links a {
+        color: var(--text-dark);
+        font-size: 1.2rem;
+        width: 100%;
+        padding: 1rem 0;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .phase-hero {
+        padding: 150px 0 100px;
+        background-attachment: scroll;
+      }
+
+      .phase-details-section {
+        padding: 80px 0;
+      }
+
+      .map-wrapper {
+        padding: 80px 0;
+      }
+
+      .map-container {
+        width: 95%;
+        height: 400px;
+      }
+
+      .download-btn {
+        padding: 16px 32px;
+        font-size: 14px;
+        min-width: 250px;
+      }
+
+      .map-address {
+        font-size: 1rem;
+        padding: 12px 24px;
+        margin-top: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .phase-hero {
+        padding: 120px 0 80px;
+      }
+
+      .phase-details-section {
+        padding: 60px 0;
+      }
+
+      .map-wrapper {
+        padding: 60px 0;
+      }
+
+      .map-container {
+        width: 98%;
+        height: 350px;
+        border: 4px solid var(--white);
+        border-radius: 16px;
+      }
+
+      .download-btn {
+        padding: 14px 28px;
+        font-size: 13px;
+        min-width: 220px;
+      }
+
+      .section-header {
+        margin-bottom: 40px;
+      }
+
+      .map-heading {
+        margin-bottom: 30px;
+        padding-bottom: 15px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Navigation -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="navbar-container">
-      <a href="index.html" class="navbar-brand">
+      <a href="index.html" class="navbar-brand" aria-label="Rio Tierra Real Estate Homepage">
         <img src="Rio Tierra Logo.png" alt="Rio Tierra Logo" class="navbar-logo" width="65" height="65">
       </a>
-      <div class="navbar-links">
-        <a href="index.html">Home</a>
-        <a href="sales.html" class="active">Sales</a>
-        <a href="#contact">Contact</a>
-      </div>
+      <ul class="navbar-links" role="menubar">
+        <li role="none"><a href="index.html" role="menuitem">Home</a></li>
+        <li role="none"><a href="sales.html" class="active" role="menuitem" aria-current="page">Sales</a></li>
+        <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
+      </ul>
       <div class="navbar-right">
         <a href="#contact" class="navbar-cta">Get In Touch</a>
-        <button class="mobile-menu-btn">
+        <button class="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false">
           <span></span>
           <span></span>
           <span></span>
@@ -36,45 +816,45 @@
     </div>
   </nav>
 
-  <!-- Phase Hero Section -->
-  <section class="phase-hero">
-    <div class="phase-hero-overlay"></div>
-    <div class="container">
-      <div class="phase-hero-content">
-        <div class="subtitle">Lunar Estates</div>
-        <h1>Phase 1</h1>
+  <main id="main-content">
+    <!-- Phase Hero Section -->
+    <section class="phase-hero" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="phase-hero-content">
+          <div class="subtitle">Lunar Estates</div>
+          <h1 id="hero-title">Phase 1</h1>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Phase Details Section -->
-  <section class="phase-details-section">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Lunar Estates Phase 1</h2>
-      </div>
-      <div class="phase-grid">
+    <!-- Phase Details Section -->
+    <section class="phase-details-section" aria-labelledby="details-title">
+      <div class="container">
+        <header class="section-header">
+          <h2 id="details-title" class="section-title">Lunar Estates Phase 1</h2>
+        </header>
         <div class="phase-content">
           <div class="document-download">
-            <a href="Lunar Estates Phase I CCRs.PDF" class="download-btn" download>
-              <i class="fas fa-file-pdf"></i> Download Deed Restrictions PDF
+            <a href="Lunar Estates Phase I CCRs.PDF" class="download-btn" download aria-describedby="download-desc">
+              <span aria-hidden="true">📄</span> Download Deed Restrictions PDF
             </a>
+            <div id="download-desc" class="sr-only">PDF document containing deed restrictions for Lunar Estates Phase 1</div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Map Section -->
-  <section class="map-wrapper">
-    <div class="container">
-      <h3 class="map-heading">Lunar Estates Phase 1 Location</h3>
-      <div class="map-container">
-        <div id="map"></div>
+    <!-- Map Section -->
+    <section class="map-wrapper" aria-labelledby="map-title">
+      <div class="container">
+        <h3 id="map-title" class="map-heading">Lunar Estates Phase 1</h3>
+        <div class="map-container" role="img" aria-label="Interactive map showing Lunar Estates Phase 1 location">
+          <div id="map"></div>
+        </div>
+        <address class="map-address">Jupiter Street, Brownsville, TX 78521</address>
       </div>
-      <p class="map-address">Jupiter Street, Brownsville, TX 78521</p>
-    </div>
-  </section>
+    </section>
+  </main>
   
   <!-- Footer -->
   <footer class="footer">
@@ -83,14 +863,14 @@
         <div class="footer-grid">
           <div class="footer-about">
             <div class="footer-logo">
-        <img src="Rio Tierra Logo.png" alt="Rio Tierra Logo" class="navbar-logo" width="65" height="65">
+              <img src="Rio Tierra Logo.png" alt="Rio Tierra Logo" class="navbar-logo" width="65" height="65">
             </div>
             <p class="footer-desc">Rio Tierra Real Estate specializes in creating exceptional communities with a focus on quality, sustainability, and innovative design. Our vision is to build developments that enhance lives and create lasting value.</p>
             <div class="footer-social">
-              <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-              <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-              <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="social-icon" aria-label="Facebook"><span aria-hidden="true">📘</span></a>
+              <a href="#" class="social-icon" aria-label="Twitter"><span aria-hidden="true">🐦</span></a>
+              <a href="#" class="social-icon" aria-label="LinkedIn"><span aria-hidden="true">💼</span></a>
+              <a href="#" class="social-icon" aria-label="Instagram"><span aria-hidden="true">📷</span></a>
             </div>
           </div>
           <div class="footer-links-container">
@@ -104,55 +884,5 @@
           <div class="footer-links-container">
             <h4 class="footer-title">Our Communities</h4>
             <ul class="footer-links">
-              <li><a href="LEP1.html">Lunar Estates - Phase 1</a></li>
-              <li><a href="LEP2.html">Lunar Estates - Phase 2</a></li>
-              <li><a href="FEP2.html">Florida Estates - Phase 2</a></li>
-              <li><a href="FEP3.html">Florida Estates - Phase 3</a></li>
-              <li><a href="PGP3S1.html">Palmetto Grove - P3S1</a></li>
-            </ul>
-          </div>
-          <div class="footer-contact">
-            <h4 class="footer-title">Contact Info</h4>
-            <div class="contact-info">
-              <i class="fas fa-map-marker-alt contact-icon"></i>
-              <p>123 Development Way, Edinburg, TX 78539</p>
-            </div>
-            <div class="contact-info">
-              <i class="fas fa-phone-alt contact-icon"></i>
-              <p>+1 (956) 555-1234</p>
-            </div>
-            <div class="contact-info">
-              <i class="fas fa-envelope contact-icon"></i>
-              <p>info@riotierra.com</p>
-            </div>
-            <div class="contact-info">
-              <i class="fas fa-clock contact-icon"></i>
-              <p>Mon - Fri: 9:00 AM - 5:00 PM</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="container">
-        <div class="footer-bottom-content">
-          <p class="copyright">&copy; 2025 Rio Tierra Real Estate. All rights reserved.</p>
-          <div class="footer-bottom-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <a href="#">Sitemap</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <button id="back-to-top" class="back-to-top-btn">
-      <i class="fas fa-chevron-up"></i>
-    </button>
-  </footer>
-
-  <!-- Leaflet JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.3/leaflet.js"></script>
-  <!-- Custom JS -->
-  <script src="LEP1.js"></script>
-</body>
-</html>
+              <li><a href="LEP1.html" aria-current="page">Lunar Estates - Phase 1</a></li>
+              <li><a href="LEP2
