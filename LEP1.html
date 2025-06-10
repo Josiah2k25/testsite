@@ -847,7 +847,7 @@
     <!-- Map Section -->
     <section class="map-wrapper" aria-labelledby="map-title">
       <div class="container">
-        <h3 id="map-title" class="map-heading">Lunar Estates Phase 1</h3>
+        <h3 id="map-title" class="map-heading">Lunar Estates Phase 1 Location</h3>
         <div class="map-container" role="img" aria-label="Interactive map showing Lunar Estates Phase 1 location">
           <div id="map"></div>
         </div>
@@ -885,4 +885,354 @@
             <h4 class="footer-title">Our Communities</h4>
             <ul class="footer-links">
               <li><a href="LEP1.html" aria-current="page">Lunar Estates - Phase 1</a></li>
-              <li><a href="LEP2
+              <li><a href="LEP2.html">Lunar Estates - Phase 2</a></li>
+              <li><a href="FEP2.html">Florida Estates - Phase 2</a></li>
+              <li><a href="FEP3.html">Florida Estates - Phase 3</a></li>
+              <li><a href="PGP3S1.html">Palmetto Grove - P3S1</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h4 class="footer-title">Contact Info</h4>
+            <div class="contact-info">
+              <span aria-hidden="true">📍</span>
+              <p>123 Development Way, Edinburg, TX 78539</p>
+            </div>
+            <div class="contact-info">
+              <span aria-hidden="true">📞</span>
+              <p>+1 (956) 555-1234</p>
+            </div>
+            <div class="contact-info">
+              <span aria-hidden="true">✉️</span>
+              <p>info@riotierra.com</p>
+            </div>
+            <div class="contact-info">
+              <span aria-hidden="true">🕐</span>
+              <p>Mon - Fri: 9:00 AM - 5:00 PM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="footer-bottom-content">
+          <p class="copyright">&copy; 2025 Rio Tierra Real Estate. All rights reserved.</p>
+          <div class="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Sitemap</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">
+      <span aria-hidden="true">⬆️</span>
+    </button>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.3/leaflet.js" integrity="sha512-iB2cR9vAkDOu5y3Hdhu5nfBj6DUKzKQpyPgGLBUdphd69b6e7TvPnhCHKIaEtQzY2lz1pOoG6F6S5u0L7J+qQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
+  <script>
+    // Mobile menu functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+      const navbarLinks = document.querySelector('.navbar-links');
+      const navbar = document.querySelector('.navbar');
+      const backToTopBtn = document.getElementById('back-to-top');
+
+      // Mobile menu toggle
+      if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', function() {
+          const isExpanded = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', !isExpanded);
+          this.classList.toggle('active');
+          navbarLinks.classList.toggle('active');
+        });
+      }
+
+      // Navbar scroll effect
+      function handleScroll() {
+        const scrollY = window.scrollY;
+        
+        if (navbar) {
+          navbar.classList.toggle('scrolled', scrollY > 50);
+        }
+        
+        if (backToTopBtn) {
+          backToTopBtn.classList.toggle('show', scrollY > 300);
+        }
+      }
+
+      window.addEventListener('scroll', handleScroll);
+
+      // Back to top functionality
+      if (backToTopBtn) {
+        backToTopBtn.addEventListener('click', function() {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+      }
+
+      // Initialize map after a short delay
+      setTimeout(initializeMap, 500);
+    });
+
+    // Map initialization
+    function initializeMap() {
+      const mapContainer = document.getElementById('map');
+      
+      if (!mapContainer) {
+        console.error('Map container not found');
+        return;
+      }
+      
+      if (typeof L === 'undefined') {
+        console.error('Leaflet library not loaded');
+        showMapFallback();
+        return;
+      }
+      
+      try {
+        const jupiterStreetCoords = [25.918476, -97.395797];
+        
+        const map = L.map('map', {
+          center: jupiterStreetCoords,
+          zoom: 16,
+          zoomControl: true,
+          scrollWheelZoom: true,
+          touchZoom: true,
+          doubleClickZoom: true,
+          boxZoom: true,
+          keyboard: true
+        });
+        
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/contributors">OpenStreetMap</a> contributors',
+          maxZoom: 19,
+          minZoom: 10
+        }).addTo(map);
+        
+        const customIcon = L.divIcon({
+          className: 'custom-marker',
+          html: '<div class="marker-pin"><span aria-hidden="true">📍</span></div>',
+          iconSize: [40, 50],
+          iconAnchor: [20, 50],
+          popupAnchor: [0, -50]
+        });
+        
+        const marker = L.marker(jupiterStreetCoords, { icon: customIcon }).addTo(map);
+        
+        const popupContent = `
+          <div class="map-popup">
+            <div class="popup-header">
+              <h3>Lunar Estates Phase 1</h3>
+              <div class="popup-badge">Premium Development</div>
+            </div>
+            <div class="popup-details">
+              <div class="detail-item">
+                <span aria-hidden="true">📍</span>
+                <span>Jupiter Street, Brownsville, TX 78521</span>
+              </div>
+              <div class="detail-item">
+                <span aria-hidden="true">🏠</span>
+                <span>Residential Community</span>
+              </div>
+              <div class="detail-item">
+                <span aria-hidden="true">⭐</span>
+                <span>Phase 1 Development</span>
+              </div>
+            </div>
+            <a href="Lunar Estates Phase I CCRs.PDF" class="popup-download" download>
+              <span aria-hidden="true">📄</span>
+              <span>Download Deed Restrictions</span>
+            </a>
+          </div>
+        `;
+        
+        marker.bindPopup(popupContent, {
+          maxWidth: 350,
+          minWidth: 280,
+          className: 'custom-popup',
+          closeButton: true,
+          autoClose: false,
+          closeOnEscapeKey: true
+        });
+        
+        setTimeout(() => {
+          map.invalidateSize();
+          marker.openPopup();
+        }, 200);
+        
+        // Store references for potential future use
+        window.lunarEstatesMap = map;
+        window.lunarEstatesMarker = marker;
+        
+      } catch (error) {
+        console.error('Map initialization error:', error);
+        showMapFallback();
+      }
+    }
+
+    function showMapFallback() {
+      const mapContainer = document.getElementById('map');
+      if (mapContainer) {
+        mapContainer.innerHTML = `
+          <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; min-height: 400px; text-align: center; color: #666; background: linear-gradient(135deg, #f8f9fa, #e9ecef); padding: 40px 20px;">
+            <span style="font-size: 64px; color: var(--primary); margin-bottom: 24px; filter: drop-shadow(0 4px 12px rgba(193, 116, 60, 0.2));" aria-hidden="true">📍</span>
+            <h3 style="color: var(--text-dark); margin: 0 0 12px 0; font-size: 20px; font-weight: 600;">Lunar Estates Phase 1</h3>
+            <p style="margin: 6px 0; font-size: 14px; color: #666; line-height: 1.5;">Jupiter Street, Brownsville, TX 78521</p>
+            <p style="margin: 6px 0; font-size: 14px; color: #666; line-height: 1.5;">Interactive map temporarily unavailable</p>
+            <a href="Lunar Estates Phase I CCRs.PDF" download style="display: inline-flex; align-items: center; background: var(--primary); color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; margin-top: 20px; transition: all 0.3s ease;">
+              <span aria-hidden="true" style="margin-right: 8px;">📄</span>
+              Download Deed Restrictions
+            </a>
+          </div>
+        `;
+      }
+    }
+
+    // Add popup styles
+    const popupStyles = document.createElement('style');
+    popupStyles.textContent = `
+      .custom-popup .leaflet-popup-content-wrapper {
+        background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+        border-radius: 16px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.15), 0 8px 25px rgba(0,0,0,0.1);
+        border: none;
+        padding: 0;
+        overflow: hidden;
+        backdrop-filter: blur(10px);
+      }
+      
+      .custom-popup .leaflet-popup-tip {
+        background: linear-gradient(135deg, var(--primary), var(--primary-light));
+        width: 20px;
+        height: 20px;
+        border: none;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      }
+      
+      .custom-popup .leaflet-popup-content {
+        margin: 0;
+        padding: 0;
+        width: auto !important;
+      }
+      
+      .map-popup {
+        padding: 0;
+        font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+      }
+      
+      .popup-header {
+        background: linear-gradient(135deg, var(--primary), var(--primary-light));
+        padding: 20px 24px 16px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .popup-header h3 {
+        color: #ffffff;
+        margin: 0 0 8px 0;
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        position: relative;
+        z-index: 1;
+      }
+      
+      .popup-badge {
+        background: rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        display: inline-block;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        position: relative;
+        z-index: 1;
+      }
+      
+      .popup-details {
+        padding: 20px 24px 16px;
+      }
+      
+      .detail-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+        font-size: 14px;
+        color: var(--text-dark);
+      }
+      
+      .detail-item:last-child {
+        margin-bottom: 0;
+      }
+      
+      .detail-item span:first-child {
+        color: var(--primary);
+        margin-right: 12px;
+        width: 16px;
+        text-align: center;
+        font-size: 14px;
+      }
+      
+      .detail-item span:last-child {
+        font-weight: 500;
+        line-height: 1.4;
+      }
+      
+      .popup-download {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, var(--text-dark), #34495e);
+        color: #ffffff;
+        padding: 16px 24px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        margin: 0;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .popup-download::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+        transition: left 0.5s ease;
+      }
+      
+      .popup-download:hover::before {
+        left: 100%;
+      }
+      
+      .popup-download:hover {
+        background: linear-gradient(135deg, #34495e, var(--text-dark));
+        color: #ffffff;
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      }
+      
+      .popup-download span:first-child {
+        margin-right: 8px;
+        font-size: 14px;
+      }
+    `;
+    document.head.appendChild(popupStyles);
+  </script>
+</body>
+</html>
