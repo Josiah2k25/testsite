@@ -1,3 +1,4 @@
+//LEP2.js
 document.addEventListener('DOMContentLoaded', function() {
     // Original site functionality 
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
